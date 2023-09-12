@@ -14,7 +14,7 @@ const Subtema = require('./model/subtema')
 const User = require('./model/user')
 
 //Route importing
-
+const indexRouter = require('./routes/index')
 
 const app = express()
 
@@ -38,8 +38,6 @@ const fileFilter = (req, file, cb) => {
 
 app.set('view engine', 'ejs')
 app.set('views', 'views')
-
-//const routes = require('./routes/routes')
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(multer({storage: fileStorage, fileFilter: fileFilter }).single('imagem'))
@@ -80,10 +78,7 @@ app.use((req, res, next) => {
 app.use(flash())
 
 //Routes mapping
-/* app.use(indexRoute)
-
-app.use(embriaoRoute) */
-
+app.use(indexRouter)
 //app.use(errorController.get404)
 
 //Associations

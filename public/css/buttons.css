@@ -1,0 +1,25 @@
+.add-unidade {
+    position: fixed;
+    bottom: 1em;
+    right: 15px;
+    border-radius: 8px 0px 0px 8px;
+    width: 45px;
+    height: 45px;
+    background-color: #1a961873;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+}
+
+.add-tema {
+    width: 45px;
+    height: 45px;
+    background-color: #185d9673;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}

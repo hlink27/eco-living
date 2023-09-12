@@ -8,6 +8,7 @@ const Tema = sequelize.define('tema', {
         allowNull: false,
         primaryKey: true
     },
-    nome: Sequelize.STRING
+    nome: Sequelize.STRING,
+    progresso: Sequelize.INTEGER
 }, {paranoid: true})
 module.exports = Tema

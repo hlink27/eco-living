@@ -81,6 +81,7 @@ app.use(flash())
 //Routes mapping
 app.use(indexRouter)
 app.use(mgmtController)
+
 //app.use(errorController.get404)
 
 //Associations

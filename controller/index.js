@@ -5,11 +5,19 @@ const Subtema = require('../model/subtema')
 exports.getIndex = (req, res, next) => {
     Unidade.findAll()
     .then(unidade => {
-        res.render('index', {
-            pageTitle: 'Início',
-            path: '/',
-            unidade: unidade,
-            user: req.session.user
-        });
+        Tema.findAll({where: {unidade_id: unidade[0].id}})
+        .then(tema => {
+            Subtema.findAll()
+            .then(subtema => {
+                res.render('index', {
+                    pageTitle: 'Início',
+                    path: '/',
+                    unidade: unidade,
+                    tema: tema,
+                    subtema: subtema,
+                    user: req.session.user
+                });
+            })
+        })
     })
 }

@@ -104,15 +104,15 @@ body {
       vertical-align: middle;
   }
 
-  .done {
-      background-color: #1B9618;
+  .pronto {
+    background-color: #1B9618;
   }
 
-  .doing {
+  .andamento {
     background-color: #E8922C;
   }
 
-  .null {
+  .inexistente {
     background-color: #BD2D2D;
   }
 
@@ -134,4 +134,23 @@ body {
     height: 100%;
     object-fit: cover;
     object-position: center center;
+}
+.unity-title {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    align-items: stretch;
+    justify-content: space-around;
+}
+.unity-title a {
+    align-self: center;
+}
+.unity-title .espacamento {
+    width: 2em;
+}
+.add-tema {
+    background-color: #6B0FDE;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #fff;
 }

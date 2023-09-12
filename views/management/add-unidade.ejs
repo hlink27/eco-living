@@ -31,15 +31,29 @@
                 <input type="submit">
               </form>
             <% } else if(temaBool){ %>
-              <form class="input-form" action="/add-tema" method="POST">
+              <form class="input-form" action="/add-tema" method="POST" autocomplete="off">
                 <h2>Título:</h2>
-                <input type="text" name="nome" required>
+                <input type="text" name="nome" required><br>
+                <h2>Barra de Progresso:</h2>
+                <input type="checkbox" name="progressbar" chacked="true">
                 <input type="hidden" name="unidadeId" value="<%= unidade.id %>">
                 <br><br><br><br><br>
                 <input type="submit">
               </form>
             <% } else { %>
-
+              <form class="input-form" action="/add-subtema" method="POST" autocomplete="off">
+                <h2>Título:</h2>
+                <input type="text" name="nome" required><br>
+                <h2>Progresso:</h2>
+                <select name="sts">
+                  <option value="inexistente">Inexistente</option>
+                  <option value="andamento">Andamento</option>
+                  <option value="pronto">Pronto</option>
+                </select>
+                <input type="hidden" name="temaId" value="<%= tema.id %>">
+                <br><br><br><br><br>
+                <input type="submit">
+              </form>
             <% }%>
           </div>
         </main>

@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="/css/buttons.css">
   </head>
   <body>
-    <a href="/add-unidade" class="add-unidade">+</a>
     <% for(u of unidade){ %>
       <div class="wrapper">
         <div class="card">
@@ -22,79 +21,59 @@
           <div class="imagem-ficha">
             <img src="<%= u.img %>" alt="" class="logo">
           </div>
-          <h1 class="name"><%= u.nome %></h1>
+          <div class="unity-title">
+            <div class="espacamento"></div>
+            <h1 class="name"><%= u.nome %></h1>
+            <div class="espacamento">
+              <a href="/add-tema/<%= u.id %>" class="add-tema">Add</a>
+            </div>
+          </div>
         </div>
       </header>
       <main class="main-content">
         <div class="scrolling-container">
-          <section id="idv">
-            <h3 class="section-title">Identidade Visual</h3>
-            <div class="progress">
-              <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <ul class="items-list">
-              <li>
-                <span class="item-name">Logotipo</span>
-                <div class="status done">Pronto</div>
-              </li>
-              <li>
-                <span class="item-name">Manual de Identidade Visual</span>
-                <div class="status doing">Em produção</div>
-              </li>
-            </ul>
-          </section>
-          <section id="website">
-            <h3 class="section-title">Website</h3>
-            <div class="progress">
-              <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <ul class="items-list">
-              <li>
-                <span class="item-name">Domínio</span>
-                <div class="status done">Pronto</div>
-              </li>
-              <li>
-                <span class="item-name">Hospedagem</span>
-                <div class="status done">Pronto</div>
-              </li>
-              <li>
-                <span class="item-name">Página Web</span>
-                <div class="status done">Pronto</div>
-              </li>
-            </ul>
-          </section>
-          <section id="website">
-            <h3 class="section-title">Redes Sociais</h3>
-            <div class="progress">
-              <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <ul class="items-list">
-              <li>
-                <span class="item-name">Instagram</span>
-                <div class="status done">Pronto</div>
-              </li>
-              <li>
-                <span class="item-name">WhatsApp</span>
-                <div class="status null">Inexiste</div>
-              </li>
-              <li>
-                <span class="item-name">Facebook</span>
-                <div class="status done">Pronto</div>
-              </li>
-              <li>
-                <span class="item-name">Threads</span>
-                <div class="status">N/A</div>
-              </li>
-              <li>
-                <span class="item-name">X (Twitter)</span>
-                <div class="status null">Inexiste</div>
-              </li>
-              <li>
-                <span class="item-name">Tik Tok</span>
-                <div class="status">N/A</div>
-              </li>
-            </ul>
-          </section>
+          <% for(t of tema){ %>
+            <% var subs = [] %>
+            <section id="idv">
+              <div style="display: flex; justify-content: space-between; flex-flow: row nowrap;">
+                <div class="section-title"><%= t.nome %></div>
+                <div class="add-subtema"><a href="/add-subtema/<%= t.id %>">Add</a></div>
+              </div>
+              
+              <% for(s of subtema){
+                if(s.tema_id == t.id){
+                  subs.push(s)
+                }
+              } %>
+              <% if(t.progresso != 0){ %>
+                <%
+                  var total = subs.length
+                  if(total > 0){
+                    var corte = 0
+                    for(s of subs){
+                      if(s.sts == 'pronto'){
+                        corte++
+                      }
+                    }
+                    var porcentagem = (100 * corte) / total
+                  } else {
+                    var porcentagem = 0
+                  }
+                %>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" style="width: <%= porcentagem %>%" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              <% } %>
+              <ul class="items-list">
+                <% for(s of subs){ console.log(s)%>
+                  <li>
+                    <span class="item-name"><%= s.nome %></span>
+                    <div class="status <%= s.sts %>"><%= s.sts %></div>
+                  </li>
+                <% } %>
+              </ul>
+            </section>
+          <% } %>
         </div>
       </main>
     </div>

@@ -49,9 +49,45 @@ exports.getAddTema = (req, res, next) => {
 exports.postAddTema = (req, res, next) => {
     var nome = req.body.nome
     var unidadeId = req.body.unidadeId
+    var progresso = req.body.progressbar
+    progresso ? progresso = 1 : progresso = 0
     Tema.create({
         nome: nome,
-        unidade_id: unidadeId
+        unidade_id: unidadeId,
+        progresso: progresso
+    })
+    .then(result => {
+        res.redirect('/')
+    })
+    .catch(err => {
+        console.log(err)
+    })
+}
+
+exports.getAddSubtema = (req, res, next) => {
+    var temaId = req.params.temaId
+    Tema.findByPk(temaId)
+    .then(tema => {
+        res.render('management/add-unidade', {
+            pageTitle: 'Adicionar Tema',
+            path: '/management/add-unidade',
+            tema: tema,
+            unidadeBool: false,
+            temaBool: false,
+            subtemaBool: true,
+            user: req.session.user
+        });
+    })
+}
+
+exports.postAddSubmeta = (req, res, next) => {
+    var nome = req.body.nome
+    var sts = req.body.sts
+    var temaId = req.body.temaId
+    Subtema.create({
+        nome: nome,
+        sts: sts,
+        tema_id: temaId
     })
     .then(result => {
         res.redirect('/')

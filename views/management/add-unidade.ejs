@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Acompanhamento de Serviços</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,500;6..12,600;6..12,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="">
+    <style>
+      body {
+        margin: 0;
+        background-color: #202124;
+        font: normal 1em "Nunito Sans", sans-serif; 
+        line-height: 1;
+
+        display: flex;
+        flex-flow: column;
+        gap: 2em;
+      }
+      .wrapper {
+          min-width: 360px;
+          max-width: 450px;
+          height: 100vh;
+          margin: 0 auto;
+          background-color: #e7eef0;
+      }
+
+      .main-header {
+          padding: 16px;
+          background-color: #e7eef0;
+      }
+
+      .logo-container {
+          width: 88px;
+          height: 88px;
+          margin: 0 auto;
+          background-color: #b2b2b2;
+          border-radius: 50%;
+      }
+
+      .name {
+          margin-bottom: 0;
+          font-size: 24px;
+          text-align: center;
+      }
+      .main-content {
+          height: calc(100% - 185px);
+          padding: 24px;
+          border-top-right-radius: 24px;
+          border-top-left-radius: 24px;
+          background-color: white;
+      }
+
+      .scrolling-container {
+        height: 100%;
+        overflow-y: auto;
+      }
+
+      .app-title {
+          margin: 0 0 16px;
+          font-size: 20px;
+          font-weight: 500;
+      }
+      
+      section {
+          padding: 16px 0;
+          border-bottom: solid 1px #E7E7E7;
+      }
+
+      .section-title {
+          margin: 0 0 4px;
+          font-size: 18px;
+          font-weight: bold;
+          color: #4d4d4d;
+      }
+
+      .progress {
+          margin-top: 8px;
+          background-color: lightgray;
+          height: 10px;
+          width: 100%;
+          color: #f2f2f2;
+          border-radius: 50px;
+      }
+
+      .progress-bar {
+        height: 100%;
+        background: linear-gradient(90.21deg, #6B0FDE 2.04%, #E31AF1 97.38%), #F2F2F2;
+        border-radius: 50px;
+      }
+
+      .items-list {
+          margin: 12px 0 0;
+          padding-left: 18px;
+          list-style-type: square;
+          color: #4d4d4d;
+      }
+      
+      .item-name {
+          line-height: 1.8;
+      }
+
+      .status {
+          display: inline-block;
+          margin-left: 6px;
+          background-color: #b1b1b1;
+          padding: 3px;
+          color: white;
+          font-size: 10px;
+          font-weight: bold;
+          border-radius: 4px;
+          text-transform: uppercase;
+          vertical-align: middle;
+      }
+
+      .done {
+          background-color: #1B9618;
+      }
+
+      .doing {
+        background-color: #E8922C;
+      }
+
+      .null {
+        background-color: #BD2D2D;
+      }
+
+      /* Hierro */
+      .card {
+        display: flex;
+        flex-flow: column;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="card">
+        <header class="main-header">
+          <div class="brand">
+            <h1 class="name">Adicionar Unidade</h1>
+          </div>
+        </header>
+        <main class="main-content">
+          <div class="scrolling-container">
+            <form class="input-form" action="add-unidade" method="POST" enctype="multipart/form-data">
+              <h2>Título:</h2>
+              <input type="text" title="nome">
+              <h2>Imagem:</h2>
+              <input type="file" name="imagem">
+              <br><br><br><br><br>
+              <input type="submit">
+            </form>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+<nav>
+    <span onclick="openNav()" class="mobile-nav-open-icon" id="mobile-nav-open-icon">
+        <div style="width: 40px;">
+            <img src="/imgs/menu.png" style="width: 100%;">
+        </div>
+    </span>
+</nav>
+<div class="backdrop-container" id="backdrop"></div>
+<div id="mySidenav" class="sidenav-container">
+    <span class="drawer-close-button">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </span>
+    <a href="/" onclick="closeNav()"><i class="fa-solid fa-table-columns"></i>Dashboard</a>
+    <div class="last-block">
+        <form action="/logout" method="POST">
+            <button class="card-btn" type="submit">Sair</button>
+        </form>
+    </div>
+</div>
+<script src="/js/navbar.js"></script>

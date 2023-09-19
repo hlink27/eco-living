@@ -16,6 +16,7 @@ const User = require('./model/user')
 //Route importing
 const indexRouter = require('./routes/index')
 const mgmtController = require('./routes/management')
+const authController = require('./routes/auth')
 
 const app = express()
 
@@ -81,6 +82,7 @@ app.use(flash())
 //Routes mapping
 app.use(indexRouter)
 app.use(mgmtController)
+app.use(authController)
 
 //app.use(errorController.get404)
 

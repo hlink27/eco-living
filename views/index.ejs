@@ -1,18 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Acompanhamento de Serviços</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,500;6..12,600;6..12,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/buttons.css">
+<%- include('includes/head.ejs')%>
   </head>
   <body>
+    <%- include('includes/nav.ejs') %>
     <% for(u of unidade){ %>
       <div class="wrapper">
         <div class="card">
@@ -39,7 +28,6 @@
                 <div class="section-title"><%= t.nome %></div>
                 <div class="add-subtema"><a href="/add-subtema/<%= t.id %>">Add</a></div>
               </div>
-              
               <% for(s of subtema){
                 if(s.tema_id == t.id){
                   subs.push(s)
@@ -65,7 +53,7 @@
                 </div>
               <% } %>
               <ul class="items-list">
-                <% for(s of subs){ console.log(s)%>
+                <% for(s of subs){%>
                   <li>
                     <span class="item-name"><%= s.nome %></span>
                     <div class="status <%= s.sts %>"><%= s.sts %></div>

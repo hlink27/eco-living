@@ -36,7 +36,7 @@ exports.getUnidade = (req, res, next) => {
     const unidade = req.params.unidade
     Unidade.findOne({where: {id: unidade}})
     .then(unidade => {
-        Tema.findAll({where: {unidade_id: unidade}})
+        Tema.findAll({where: {unidade_id: unidade.id}})
         .then(tema => {
             const temaIds = new Set()
             tema.forEach(tema => {
@@ -45,8 +45,6 @@ exports.getUnidade = (req, res, next) => {
             const subtemasId = Array.from(temaIds)
             Subtema.findAll({where: {tema_id: subtemasId}})
             .then(subtema => {
-                console.log(tema)
-                console.log(subtema)
                 res.render('unidade/index', {
                     pageTitle: unidade.nome,
                     path: '/unidade/index',

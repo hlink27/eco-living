@@ -57,7 +57,7 @@ exports.postAddTema = (req, res, next) => {
         progresso: progresso
     })
     .then(result => {
-        res.redirect('/')
+        res.redirect(`/unidade/${unidadeId}`)
     })
     .catch(err => {
         console.log(err)
@@ -71,6 +71,7 @@ exports.getAddSubtema = (req, res, next) => {
         res.render('management/add-unidade', {
             pageTitle: 'Adicionar Tema',
             path: '/management/add-unidade',
+            unidade: tema.unidade_id,
             tema: tema,
             unidadeBool: false,
             temaBool: false,
@@ -84,13 +85,14 @@ exports.postAddSubmeta = (req, res, next) => {
     var nome = req.body.nome
     var sts = req.body.sts
     var temaId = req.body.temaId
+    var unidadeId = req.body.unidadeId
     Subtema.create({
         nome: nome,
         sts: sts,
         tema_id: temaId
     })
     .then(result => {
-        res.redirect('/')
+        res.redirect(`/unidade/${unidadeId}`)
     })
     .catch(err => {
         console.log(err)

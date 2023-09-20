@@ -10,6 +10,8 @@ router.post('/add-unidade', isAuth, isAdmin, mgmtController.postAddUnidade)
 
 router.get('/add-tema/:unidadeId', isAuth, isAdmin, mgmtController.getAddTema)
 router.post('/add-tema', isAuth, isAdmin, mgmtController.postAddTema)
+router.get('/edit-tema/:temaId', isAuth, isAdmin, mgmtController.getEditTema)
+router.post('/edit-tema', isAuth, isAdmin, mgmtController.postEditTema)
 
 router.get('/add-subtema/:temaId', isAuth, isAdmin, mgmtController.getAddSubtema)
 router.post('/add-subtema', isAuth, isAdmin, mgmtController.postAddSubmeta)

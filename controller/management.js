@@ -31,6 +31,43 @@ exports.postAddUnidade = (req, res, next) => {
         })
 }
 
+exports.getEditUnidade = (req, res, next) => {
+    var unidadeId = req.body.unidadeId
+    Unidade.findByPk(unidadeId)
+    .then(unidade => {
+        res.render('management/add-unidade', {
+            pageTitle: 'Editar Tema',
+            path: '/management/add-unidade',
+            unidade: unidade,
+            unidadeBool: true,
+            temaBool: false,
+            subtemaBool: false,
+            edit: true,
+            user: req.session.user
+        });
+    })
+}
+
+exports.postEditUnidade = (req, res, next) => {
+    var nome = req.body.nome
+    var img = req.file.path
+    var unidadeId = req.body.unidadeId
+    Unidade.findByPk(unidadeId)
+    .then(unidade => {
+        unidade.nome = nome
+        if(img){
+            unidade.img = img
+        }
+        unidade.save()
+    })
+    .then(result => {
+        res.redirect(`/unidade/${unidadeId}`)
+    })
+    .catch(err => {
+        console.log(err)
+    })
+}
+
 exports.getAddTema = (req, res, next) => {
     const unidadeId = req.params.unidadeId
     Unidade.findByPk(unidadeId)
@@ -58,6 +95,44 @@ exports.postAddTema = (req, res, next) => {
         nome: nome,
         unidade_id: unidadeId,
         progresso: progresso
+    })
+    .then(result => {
+        res.redirect(`/unidade/${unidadeId}`)
+    })
+    .catch(err => {
+        console.log(err)
+    })
+}
+
+exports.getEditTema = (req, res, next) => {
+    var temaId = req.params.temaId
+    Tema.findByPk(temaId, {include: {model: Unidade}})
+    .then(tema => {
+        res.render('management/add-unidade', {
+            pageTitle: 'Editar Tema',
+            path: '/management/add-unidade',
+            tema: tema,
+            unidadeBool: false,
+            temaBool: true,
+            subtemaBool: false,
+            edit: true,
+            unidade: tema.unidade.id,
+            user: req.session.user
+        });
+    })
+}
+
+exports.postEditTema = (req, res, next) => {
+    var nome = req.body.nome
+    var progresso = req.body.progressbar
+    progresso ? progresso = 1 : progresso = 0
+    var temaId = req.body.temaId
+    var unidadeId = req.body.unidadeId
+    Tema.findByPk(temaId)
+    .then(tema => {
+        tema.nome = nome,
+        tema.progresso = progresso
+        tema.save()
     })
     .then(result => {
         res.redirect(`/unidade/${unidadeId}`)

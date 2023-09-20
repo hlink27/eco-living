@@ -12,29 +12,38 @@
         <main class="main-content">
           <div class="scrolling-container">
             <% if(unidadeBool){ %>
+
               <!-- ADICIONAR UNIDADE -->
               <form class="input-form" action="/add-unidade" method="POST" enctype="multipart/form-data" autocomplete="off">
                 <h2>Título:</h2>
-                <input type="text" name="nome" required>
+                <input type="text" name="nome" value="<%= edit ? unidade.nome : %>" required>
                 <h2>Imagem:</h2>
-                <input type="file" name="imagem" required>
+                <input type="file" name="imagem">
                 <br><br><br><br><br>
+                <% if(edit){ %>
+                  <input type="hidden" value="<%= unidade.id %>" name="unidadeId">
+                <% } %>
                 <input type="submit">
               </form>
 
             <% } else if(temaBool){ %>
+
               <!-- ADICIONAR TEMA -->
-              <form class="input-form" action="/add-tema" method="POST" autocomplete="off">
+              <form class="input-form" action="<%= edit ? `/edit-tema` : `/add-tema` %>" method="POST" autocomplete="off">
                 <h2>Título:</h2>
-                <input type="text" name="nome" required><br>
+                <input type="text" name="nome" value="<%= edit ? tema.nome : '' %>" required><br>
                 <h2>Barra de Progresso:</h2>
-                <input type="checkbox" name="progressbar" chacked="true">
-                <input type="hidden" name="unidadeId" value="<%= unidade.id %>">
+                <input type="checkbox" name="progressbar" <%= edit ? (tema.progresso == 1 ? 'checked' : '') : '' %>>
+                <input type="hidden" name="unidadeId" value="<%= unidade %>">
+                <% if(edit) { %>
+                  <input type="hidden" name="temaId" value="<%= tema.id %>">
+                <% } %>
                 <br><br><br><br><br>
                 <input type="submit">
               </form>
 
             <% } else { %>
+
               <!-- ADICIONAR SUBTEMA -->
               <form class="input-form" action="<%= edit ? `/edit-subtema` : `/add-subtema` %>" method="POST" autocomplete="off">
                 <h2>Título:</h2>
@@ -62,6 +71,7 @@
                 </form>
               <% } %>
             <% }%>
+
           </div>
         </main>
       </div>

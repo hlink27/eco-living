@@ -1,0 +1,74 @@
+<%- include('../includes/head.ejs')%>
+  </head>
+  <body>
+    <%- include('../includes/nav.ejs') %>
+            <div class="wrapper">
+              <div class="card">
+            <header class="main-header">
+              <div class="brand">
+                <div class="imagem-ficha">
+                  <img src="<%= unidade.img %>" alt="" class="logo">
+                </div>
+                <div class="unity-title">
+                  <div class="espacamento"></div>
+                  <h1 class="name"><%= unidade.nome %></h1>
+                    <div class="espacamento">
+                      <% if(user.is_admin === 1){ %>
+                        <a href="/add-tema/<%= unidade.id %>" class="add-tema">Add</a>
+                      <% } %>
+                    </div>
+                </div>
+              </div>
+            </header>
+            <main class="main-content">
+              <div class="scrolling-container">
+                <% for(t of tema){ %>
+                  <% var subs = [] %>
+                  <section id="idv">
+                    <div style="display: flex; justify-content: space-between; flex-flow: row nowrap;">
+                      <div class="section-title"><%= t.nome %></div>
+                      <% if(user.is_admin === 1){ %>
+                        <a href="/add-subtema/<%= t.id %>">Add</a>
+                      <% } %>
+                    </div>
+                    <% for(s of subtema){
+                      if(s.tema_id == t.id){
+                        subs.push(s)
+                      }
+                    } %>
+                    <% if(t.progresso != 0){ %>
+                      <%
+                        var total = subs.length
+                        if(total > 0){
+                          var corte = 0
+                          for(s of subs){
+                            if(s.sts == 'pronto'){
+                              corte++
+                            }
+                          }
+                          var porcentagem = (100 * corte) / total
+                        } else {
+                          var porcentagem = 0
+                        }
+                      %>
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: <%= porcentagem %>%" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    <% } %>
+                    <ul class="items-list">
+                      <% for(s of subs){%>
+                        <li>
+                          <span class="item-name"><%= s.nome %></span>
+                          <div class="status <%= s.sts %>"><%= s.sts %></div>
+                        </li>
+                      <% } %>
+                    </ul>
+                  </section>
+                <% } %>
+              </div>
+            </main>
+          </div>
+          </div>
+    <script src="" async defer></script>
+  </body>
+</html>

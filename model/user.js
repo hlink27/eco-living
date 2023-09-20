@@ -11,6 +11,6 @@ const User = sequelize.define('user', {
     username: Sequelize.STRING,
     password: Sequelize.STRING,
     is_admin: Sequelize.INTEGER,
-    os: Sequelize.BLOB
+    os: Sequelize.STRING
 }, {paranoid: true})
 module.exports = User

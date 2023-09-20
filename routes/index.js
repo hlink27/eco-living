@@ -6,4 +6,6 @@ const router = express.Router()
 
 router.get('/', isAuth, indexController.getIndex)
 
+router.get('/unidade/:unidade', isAuth, indexController.getUnidade)
+
 module.exports = router

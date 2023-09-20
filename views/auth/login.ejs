@@ -1,10 +1,25 @@
 <%- include('../includes/head.ejs')%>
-<div class="wrapper">
-    <div class="card">
-        <form class="login-form" method="POST" action="/login">
-            <input type="text" name="username" placeholder="USUÁRIO">
-            <input type="password" name="senha" placeholder="SENHA">
-            <button type="submit">ENTRAR</button>
-        </form>
+<link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <div class="campo-login">
+        <div class="imagem-ficha">
+            <img src="/imgs/ecudado.png">
+        </div>
+        <div class="board">
+            <form class="login-form" method="POST" action="/login">
+                <div class="input-space">
+                    <label>Usuário</label>
+                    <input type="text" name="username">
+                </div>
+                <div class="input-space">
+                    <label>Senha:</label>
+                    <input type="password" name="senha">
+                </div>
+                <div class="input-space">
+                    <button type="submit">Entrar</button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
+</body>

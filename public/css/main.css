@@ -1,13 +1,8 @@
 body {
     margin: 0;
-    background-color: #202124;
+    background-color: #E6EFEE;
     font: normal 1em "Nunito Sans", sans-serif; 
-    line-height: 1;
-
-    /* display: flex;
-    flex-flow: column;
-    gap: 2em; */
-  }
+}
   .wrapper {
       min-width: 360px;
       max-width: 450px;
@@ -116,7 +111,6 @@ body {
     background-color: #BD2D2D;
   }
 
-  /* Hierro */
   .card {
     display: flex;
     flex-flow: column;
@@ -154,3 +148,36 @@ body {
     text-decoration: none;
     color: #fff;
 }
+
+/* Index */
+
+.index-menu {
+    margin-top: 3.5rem;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
+.index-menu .item {
+    width: 6rem;
+    height: 6.5rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 5px 5px 5px #d6d6d6;
+}
+
+a {
+    text-decoration: none;
+    font-size: medium;
+    color: #000;
+}
+
+.item img {
+    width: 80%;
+}
+
+/* Index */

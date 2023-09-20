@@ -1,3 +1,49 @@
+
+.campo-login {
+    margin-top: 10%;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 3em;
+}
+
+.campo-login .imagem-ficha {
+    filter: grayscale(100%);
+}
+
 .board {
     background-color: white;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 8px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.input-space {
+    margin: 0 auto;
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+}
+
+.login-form {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    gap: 2em;
+    padding: 2em;
+}
+
+.login-form input {
+    padding: 0.5em;
+}
+
+.input-space button {
+    background-color: #3D51FF;
+    border: none;
+    padding: 0.5rem;
+    color: #fff;
+    border-radius: 4px;
 }

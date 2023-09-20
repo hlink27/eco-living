@@ -26,7 +26,7 @@
                   <% var subs = [] %>
                   <section id="idv">
                     <div style="display: flex; justify-content: space-between; flex-flow: row nowrap;">
-                      <div class="section-title"><%= t.nome %></div>
+                      <a href="/edit-tema/<%= t.id %>"><div class="section-title"><%= t.nome %></div></a>
                       <% if(user.is_admin === 1){ %>
                         <a href="/add-subtema/<%= t.id %>">Add</a>
                       <% } %>
@@ -58,7 +58,7 @@
                     <ul class="items-list">
                       <% for(s of subs){%>
                         <li>
-                          <span class="item-name"><%= s.nome %></span>
+                          <a href="/edit-subtema/<%= s.id %>"><span class="item-name"><%= s.nome %></span></a>
                           <div class="status <%= s.sts %>"><%= s.sts %></div>
                         </li>
                       <% } %>

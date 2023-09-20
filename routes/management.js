@@ -13,5 +13,8 @@ router.post('/add-tema', isAuth, isAdmin, mgmtController.postAddTema)
 
 router.get('/add-subtema/:temaId', isAuth, isAdmin, mgmtController.getAddSubtema)
 router.post('/add-subtema', isAuth, isAdmin, mgmtController.postAddSubmeta)
+router.get('/edit-subtema/:subtemaId', isAuth, isAdmin, mgmtController.getEditSubtema)
+router.post('/edit-subtema', isAuth, isAdmin, mgmtController.postEditSubtema)
+router.post('/delete-subtema', isAuth, isAdmin, mgmtController.postDeleteSubtema)
 
 module.exports = router

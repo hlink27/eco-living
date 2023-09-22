@@ -17,11 +17,13 @@ exports.getAddUnidade = (req, res, next) => {
 exports.postAddUnidade = (req, res, next) => {
     var nome = req.body.nome
     var img = req.file
-    img = img.replace('public', '')
+    if(img){
+        img = img.replace('public', '')
+    }
     Unidade
         .create({
             nome: nome,
-            img: img.path
+            img: img
         })
         .then(result => {
             res.redirect('/')

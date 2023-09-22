@@ -79,9 +79,9 @@ nav {
 
 .sidenav-container .drawer-close-button {
     height: 3rem;
-    width: 100%;
+    align-self: flex-end;
     display: flex;
-    justify-content: right;
+    justify-content: center;
     margin-bottom: 3rem;
 }
 
@@ -102,7 +102,6 @@ nav {
 .last-block {
     width: 80%;
     text-decoration: none;
-
     display: flex;
     justify-content: center;
     transition: 0.3s;

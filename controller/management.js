@@ -18,7 +18,7 @@ exports.postAddUnidade = (req, res, next) => {
     var nome = req.body.nome
     var img = req.file
     if(img){
-        img = img.replace('public', '')
+        img = img.path.replace('public', '')
     }
     Unidade
         .create({

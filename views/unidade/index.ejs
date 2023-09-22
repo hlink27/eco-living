@@ -11,7 +11,8 @@
                 </div>
                 <div class="unity-title">
                   <div class="espacamento"></div>
-                  <h1 class="name"><%= unidade.nome %></h1>
+                  <a href="/edit-unidade/<%= unidade.id %>"><h1 class="name"><%= unidade.nome %></h1></a>
+                  
                     <div class="espacamento">
                       <% if(user.is_admin === 1){ %>
                         <a href="/add-tema/<%= unidade.id %>" class="add-tema">Add</a>
@@ -52,6 +53,7 @@
                         }
                       %>
                       <div class="progress">
+                        
                         <div class="progress-bar" role="progressbar" style="width: <%= porcentagem %>%" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
                     <% } %>

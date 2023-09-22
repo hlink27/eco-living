@@ -14,17 +14,23 @@
             <% if(unidadeBool){ %>
 
               <!-- ADICIONAR UNIDADE -->
-              <form class="input-form" action="/add-unidade" method="POST" enctype="multipart/form-data" autocomplete="off">
+              <form class="input-form" action="<%= edit ? '/edit-unidade' : '/add-unidade' %>" method="POST" enctype="multipart/form-data" autocomplete="off">
                 <h2>Título:</h2>
-                <input type="text" name="nome" value="<%= edit ? unidade.nome : %>" required>
+                <input type="text" name="nome" value="<%= edit ? unidade.nome : '' %>" required>
                 <h2>Imagem:</h2>
                 <input type="file" name="imagem">
                 <br><br><br><br><br>
                 <% if(edit){ %>
                   <input type="hidden" value="<%= unidade.id %>" name="unidadeId">
                 <% } %>
-                <input type="submit">
+                <input class="confirma" type="submit">
               </form>
+              <% if(edit){ %>
+                <form action="/delete-unidade" method="POST">
+                  <input type="hidden" name="unidadeId" value="<%= unidade.id %>">
+                  <button class="excluir" type="submit">Deletar</button>
+                </form>
+              <% } %>
 
             <% } else if(temaBool){ %>
 
@@ -39,8 +45,15 @@
                   <input type="hidden" name="temaId" value="<%= tema.id %>">
                 <% } %>
                 <br><br><br><br><br>
-                <input type="submit">
+                <input class="confirma" type="submit">
               </form>
+              <% if(edit){ %>
+                <form action="/delete-tema" method="POST">
+                  <input type="hidden" name="unidadeId" value="<%= unidade %>">
+                  <input type="hidden" name="temaId" value="<%= tema.id %>">
+                  <button class="excluir" type="submit">Deletar</button>
+                </form>
+              <% } %>
 
             <% } else { %>
 
@@ -65,13 +78,12 @@
               </form>
               <% if(edit){ %>
                 <form action="/delete-subtema" method="POST">
-                  <input type="hidden" name="unidadeId" value="<%= unidade%>">
+                  <input type="hidden" name="unidadeId" value="<%= unidade %>">
                   <input type="hidden" name="subtemaId" value="<%= subtema.id %>">
                   <button class="excluir" type="submit">Deletar</button>
                 </form>
               <% } %>
             <% }%>
-
           </div>
         </main>
       </div>

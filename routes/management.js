@@ -7,11 +7,15 @@ const router = express.Router()
 
 router.get('/add-unidade', isAuth, isAdmin, mgmtController.getAddUnidade)
 router.post('/add-unidade', isAuth, isAdmin, mgmtController.postAddUnidade)
+router.get('/edit-unidade/:unidadeId', isAuth, isAdmin, mgmtController.getEditUnidade)
+router.post('/edit-unidade', isAuth, isAdmin, mgmtController.postEditUnidade)
+router.post('/delete-unidade', isAuth, isAdmin, mgmtController.postDeleteUnidade)
 
 router.get('/add-tema/:unidadeId', isAuth, isAdmin, mgmtController.getAddTema)
 router.post('/add-tema', isAuth, isAdmin, mgmtController.postAddTema)
 router.get('/edit-tema/:temaId', isAuth, isAdmin, mgmtController.getEditTema)
 router.post('/edit-tema', isAuth, isAdmin, mgmtController.postEditTema)
+router.post('/delete-tema', isAuth, isAdmin, mgmtController.postDeleteTema)
 
 router.get('/add-subtema/:temaId', isAuth, isAdmin, mgmtController.getAddSubtema)
 router.post('/add-subtema', isAuth, isAdmin, mgmtController.postAddSubmeta)

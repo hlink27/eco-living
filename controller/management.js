@@ -16,12 +16,12 @@ exports.getAddUnidade = (req, res, next) => {
 
 exports.postAddUnidade = (req, res, next) => {
     var nome = req.body.nome
-    var img = req.file.path
+    var img = req.file
     img = img.replace('public', '')
     Unidade
         .create({
             nome: nome,
-            img: img
+            img: img.path
         })
         .then(result => {
             res.redirect('/')
@@ -32,7 +32,7 @@ exports.postAddUnidade = (req, res, next) => {
 }
 
 exports.getEditUnidade = (req, res, next) => {
-    var unidadeId = req.body.unidadeId
+    var unidadeId = req.params.unidadeId
     Unidade.findByPk(unidadeId)
     .then(unidade => {
         res.render('management/add-unidade', {
@@ -50,13 +50,13 @@ exports.getEditUnidade = (req, res, next) => {
 
 exports.postEditUnidade = (req, res, next) => {
     var nome = req.body.nome
-    var img = req.file.path
+    var img = req.file
     var unidadeId = req.body.unidadeId
     Unidade.findByPk(unidadeId)
     .then(unidade => {
         unidade.nome = nome
         if(img){
-            unidade.img = img
+            unidade.img = img.path
         }
         unidade.save()
     })
@@ -68,6 +68,17 @@ exports.postEditUnidade = (req, res, next) => {
     })
 }
 
+exports.postDeleteUnidade = (req, res, next) => {
+    var unidadeId = req.body.unidadeId
+    Unidade.findByPk(unidadeId)
+    .then(unidadeId => {
+        unidadeId.destroy()
+    })
+    .then(result => {
+        res.redirect(`/`)
+    })
+}
+
 exports.getAddTema = (req, res, next) => {
     const unidadeId = req.params.unidadeId
     Unidade.findByPk(unidadeId)
@@ -76,11 +87,11 @@ exports.getAddTema = (req, res, next) => {
             pageTitle: 'Adicionar Tema',
             path: '/management/add-unidade',
             subtema: '',
-            unidade: unidade,
+            unidade: unidade.id,
             unidadeBool: false,
             temaBool: true,
             subtemaBool: false,
-            edit: false,
+            edit: false, 
             user: req.session.user
         });
     })
@@ -139,6 +150,18 @@ exports.postEditTema = (req, res, next) => {
     })
     .catch(err => {
         console.log(err)
+    })
+}
+
+exports.postDeleteTema = (req, res, next) => {
+    var temaId = req.body.temaId
+    var unidadeId = req.body.unidadeId
+    Tema.findByPk(temaId)
+    .then(tema => {
+        tema.destroy()
+    })
+    .then(result => {
+        res.redirect(`/unidade/${unidadeId}`)
     })
 }
 

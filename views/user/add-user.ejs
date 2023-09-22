@@ -1,0 +1,36 @@
+<%- include('../includes/head.ejs')%>
+  </head>
+  <body>
+    <%- include('../includes/nav.ejs') %>
+    <div class="wrapper">
+      <div class="card">
+        <header class="main-header">
+          <div class="brand">
+            <h1 class="name"><%= pageTitle %></h1>
+          </div>
+        </header>
+        <main class="main-content">
+          <div class="scrolling-container">
+            <form class="input-form" action="<%= edit ? '/edit-user' : 'add-user' %>" method="POST" autocomplete="off">
+                <h3>Nome de Usuário:</h3>
+                <input class="text-input" type="text" name="username" value="<%= edit ? user.username : '' %>">
+                <% if(!edit){ %>
+                    <h3>Senha:</h3>
+                    <input class="text-input" type="password" name="password">
+                    <h3>Repetir Senha:</h3>
+                    <input class="text-input" type="password" name="password2">
+                <% } %>
+                <% if(unidade){ %>
+                    <h3>Acesso a:</h3>
+                    <% for(u of unidade){ %>
+                        <input type="checkbox" value="<%= u.id %>" name="ex"><%= u.nome %><br>
+                    <% } %>
+                <% } %>
+                <input class="confirma" type="submit" value="Cadastrar">
+            </form>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

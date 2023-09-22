@@ -20,7 +20,7 @@
     <a href="/">Minha Conta</a>
     <% if(user.is_admin === 1){ %>
         <a href="/add-unidade">Adicionar Unidade</a>
-        <a href="*">Adicionar Usuário</a>
+        <a href="/add-user">Adicionar Usuário</a>
     <% } %>
     <form class="last-block" action="/logout" method="POST">
         <button type="submit">Sair</button>

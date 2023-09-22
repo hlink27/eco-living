@@ -17,6 +17,7 @@ const User = require('./model/user')
 const indexRouter = require('./routes/index')
 const mgmtController = require('./routes/management')
 const authController = require('./routes/auth')
+const userController = require('./routes/user')
 
 const app = express()
 
@@ -83,6 +84,7 @@ app.use(flash())
 app.use(indexRouter)
 app.use(mgmtController)
 app.use(authController)
+app.use(userController)
 
 //app.use(errorController.get404)
 

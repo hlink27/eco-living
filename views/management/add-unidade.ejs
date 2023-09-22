@@ -16,10 +16,9 @@
               <!-- ADICIONAR UNIDADE -->
               <form class="input-form" action="<%= edit ? '/edit-unidade' : '/add-unidade' %>" method="POST" enctype="multipart/form-data" autocomplete="off">
                 <h2>Título:</h2>
-                <input type="text" name="nome" value="<%= edit ? unidade.nome : '' %>" required>
+                <input type="text" class="text-input" name="nome" value="<%= edit ? unidade.nome : '' %>" required>
                 <h2>Imagem:</h2>
                 <input type="file" name="imagem">
-                <br><br><br><br><br>
                 <% if(edit){ %>
                   <input type="hidden" value="<%= unidade.id %>" name="unidadeId">
                 <% } %>
@@ -37,14 +36,16 @@
               <!-- ADICIONAR TEMA -->
               <form class="input-form" action="<%= edit ? `/edit-tema` : `/add-tema` %>" method="POST" autocomplete="off">
                 <h2>Título:</h2>
-                <input type="text" name="nome" value="<%= edit ? tema.nome : '' %>" required><br>
-                <h2>Barra de Progresso:</h2>
-                <input type="checkbox" name="progressbar" <%= edit ? (tema.progresso == 1 ? 'checked' : '') : '' %>>
+                <input class="text-input" type="text" name="nome" value="<%= edit ? tema.nome : '' %>" required><br>
+                <div style="display: flex; gap: 2rem;">
+                  <h2>Barra de Progresso:</h2>
+                  <input type="checkbox" name="progressbar" <%= edit ? (tema.progresso == 1 ? 'checked' : '') : '' %>>
+                </div>
+                
                 <input type="hidden" name="unidadeId" value="<%= unidade %>">
                 <% if(edit) { %>
                   <input type="hidden" name="temaId" value="<%= tema.id %>">
                 <% } %>
-                <br><br><br><br><br>
                 <input class="confirma" type="submit">
               </form>
               <% if(edit){ %>
@@ -60,11 +61,11 @@
               <!-- ADICIONAR SUBTEMA -->
               <form class="input-form" action="<%= edit ? `/edit-subtema` : `/add-subtema` %>" method="POST" autocomplete="off">
                 <h2>Título:</h2>
-                <input type="text" name="nome" required value="<%= edit ? `${subtema.nome}` : `` %>"><br>
+                <input class="text-input" type="text" name="nome" required value="<%= edit ? `${subtema.nome}` : `` %>"><br>
                 <h2>Progresso:</h2>
-                <select name="sts">
+                <select name="sts" class="input-select">
                   <option <%= edit ? (subtema.sts == 'inexistente' ? 'selected' : '') : '' %> value="inexistente">Inexistente</option>
-                  <option <%= edit ? (subtema.sts == 'andamento' ? 'selected' : '') : '' %> value="andamento">Andamento</option>
+                  <option <%= edit ? (subtema.sts == 'andamento' ? 'selected' : '') : '' %> value="andamento">Em Andamento</option>
                   <option <%= edit ? (subtema.sts == 'pronto' ? 'selected' : '') : '' %> value="pronto">Pronto</option>
                 </select>
                 <% if(!edit){ %>
@@ -73,7 +74,6 @@
                   <input type="hidden" name="subtemaId" value="<%= subtema.id %>">
                 <% } %>
                 <input type="hidden" name="unidadeId" value="<%= unidade %>">
-                <br><br><br><br><br>
                 <input class="confirma" type="submit">
               </form>
               <% if(edit){ %>

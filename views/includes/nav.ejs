@@ -1,4 +1,9 @@
 <nav>
+    <span class="back-button" onclick="window.history.back()">
+        <div style="width: 40px;">
+            <img src="/imgs/turn_back.png" style="width: 100%;">
+        </div>
+    </span>
     <span onclick="openNav()" class="mobile-nav-open-icon" id="mobile-nav-open-icon">
         <div style="width: 40px;">
             <img src="/imgs/menu.png" style="width: 100%;">
@@ -12,7 +17,7 @@
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     </span>
     <a href="/" onclick="closeNav()"><i class="fa-solid fa-table-columns"></i>Início</a>
-    <a href="/">Minhas Conta</a>
+    <a href="/">Minha Conta</a>
     <% if(user.is_admin === 1){ %>
         <a href="/add-unidade">Adicionar Unidade</a>
         <a href="*">Adicionar Usuário</a>

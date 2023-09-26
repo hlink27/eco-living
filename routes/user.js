@@ -8,6 +8,8 @@ const router = express.Router()
 router.get('/add-user', isAuth, isAdmin, userController.getAddUser)
 router.post('/add-user', isAuth, isAdmin, userController.postAddUser)
 
+router.get('/delete-user/:userId', isAuth, isAdmin, userController.postDelete)
+
 router.get('/list-user', isAuth, isAdmin, userController.getListUser)
 
 module.exports = router

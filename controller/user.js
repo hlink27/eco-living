@@ -63,3 +63,14 @@ exports.getListUser = (req, res, next) => {
         });
     })
 }
+
+exports.postDelete = (req, res, next) => {
+    const userId = req.params.userId
+    User.findByPk(userId)
+    .then(userId => {
+        return userId.destroy()
+    })
+    .then(result => {
+        res.redirect('/list-user')
+    })
+}

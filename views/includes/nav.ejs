@@ -1,14 +1,16 @@
 <nav>
     <span class="back-button" onclick="window.history.back()">
-        <div style="width: 40px;">
+        <div style="width: 25px;">
             <img src="/imgs/icons/seta-voltar.svg" style="width: 100%;">
         </div>
     </span>
+    <h3 class="mobile-nav-open-icon system-title">
+        EcoLiving
+    </h3>
     <span onclick="openNav()" class="mobile-nav-open-icon" id="mobile-nav-open-icon">
-        <div style="width: 40px;">
+        <div style="width: 25px;">
             <img src="/imgs/icons/menu-burger.svg" style="width: 100%;">
         </div>
-        
     </span>
 </nav>
 <div class="backdrop-container" id="backdrop"></div>
@@ -17,11 +19,11 @@
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     </span>
     <a href="/" onclick="closeNav()"><i class="fa-solid fa-table-columns"></i>Início</a>
-    <a href="/">Minha Conta</a>
+    <a href="/" onclick="closeNav()">Minha Conta</a>
     <% if(user.is_admin === 1){ %>
-        <a href="/add-unidade">Adicionar Unidade</a>
-        <a href="/add-user">Adicionar Usuário</a>
-        <a href="/list-user">Listar Usuários</a>
+        <a onclick="closeNav()" href="/add-unidade">Adicionar Unidade</a>
+        <a onclick="closeNav()" href="/add-user">Adicionar Usuário</a>
+        <a onclick="closeNav()" href="/list-user">Listar Usuários</a>
     <% } %>
     <form class="last-block" action="/logout" method="POST">
         <button type="submit">Sair</button>

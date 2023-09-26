@@ -3,6 +3,15 @@ body {
     background-color: #E6EFEE;
     font: normal 1em "Nunito Sans", sans-serif; 
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Reem+Kufi+Fun&display=swap');
+.system-title {
+  color: #ffffff;
+  font-size: 20px !important ;
+  display: table-cell;
+  text-align: center;
+  font-family: 'Reem Kufi Fun', sans-serif;
+}
   .wrapper {
       min-width: 360px;
       max-width: 450px;

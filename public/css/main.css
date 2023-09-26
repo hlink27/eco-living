@@ -16,6 +16,10 @@ body {
       background-color: #e7eef0;
   }
 
+nav {
+    background-color: #7786f3 !important;
+}
+
   .logo-container {
       width: 88px;
       height: 88px;
@@ -122,11 +126,12 @@ body {
     height: 8em;
     border-radius: 50%;
     overflow: hidden;
+    background-color: white;
 }
 .imagem-ficha img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center center;
 }
 .unity-title {
@@ -152,23 +157,25 @@ body {
 /* Index */
 
 .index-menu {
-    margin: 0 auto;
-    margin-top: 5rem;
+    margin: 4em 1em;
     display: grid;
     grid-template-columns: 33% 34% 33%;
+    gap: 6px;
 }
 
 .index-menu .item {
-    width: 6rem;
-    height: 8rem;
+    width: 110px;
+    height: 110px;
     background-color: #ffffff;
     border-radius: 8px;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-    box-shadow: 5px 5px 5px 5px #d6d6d6;
-    margin: 0.8rem;
+    box-shadow: 0 4px 7px #d6d6d6;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 a {
@@ -178,8 +185,7 @@ a {
 }
 
 .item img {
-    margin-top: 1rem;
-    width: 80%;
+    width: 100%;
 }
 
 .porcentagem {
@@ -210,3 +216,71 @@ a {
 }
 
 /* add-unidade forms */
+
+/* The container */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}

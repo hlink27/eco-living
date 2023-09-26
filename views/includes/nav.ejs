@@ -1,12 +1,12 @@
 <nav>
     <span class="back-button" onclick="window.history.back()">
         <div style="width: 40px;">
-            <img src="/imgs/turn_back.png" style="width: 100%;">
+            <img src="/imgs/icons/seta-voltar.svg" style="width: 100%;">
         </div>
     </span>
     <span onclick="openNav()" class="mobile-nav-open-icon" id="mobile-nav-open-icon">
         <div style="width: 40px;">
-            <img src="/imgs/menu.png" style="width: 100%;">
+            <img src="/imgs/icons/menu-burger.svg" style="width: 100%;">
         </div>
         
     </span>
@@ -21,6 +21,7 @@
     <% if(user.is_admin === 1){ %>
         <a href="/add-unidade">Adicionar Unidade</a>
         <a href="/add-user">Adicionar Usuário</a>
+        <a href="/list-user">Listar Usuários</a>
     <% } %>
     <form class="last-block" action="/logout" method="POST">
         <button type="submit">Sair</button>

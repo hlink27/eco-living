@@ -1,0 +1,49 @@
+<%- include('../includes/head.ejs')%>
+<link rel="stylesheet" href="/css/datatables.css"/>
+  </head>
+  <body>
+    <%- include('../includes/nav.ejs') %>
+    <div class="wrapper">
+      <div class="card">
+        <header class="main-header">
+          <div class="brand">
+            <h1 class="name"><%= pageTitle %></h1>
+          </div>
+        </header>
+        <main class="main-content">
+          <div class="scrolling-container">
+            <table id="myTable" class="display">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Opções</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(u of usuario){ %>
+                    <tr>
+                        <td><%= u.username %></td>
+                        <td>
+                            <div style="display: flex; flex-flow: row nowrap; justify-content: center; gap: 2em;">
+                                <div class="delete-icon">
+                                    <img src="/imgs/icons/edit.svg">
+                                </div>
+                                <div class="delete-icon">
+                                    <img src="/imgs/icons/trash.svg">
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script src="/js/datatables.js"></script>
+            <script src="/js/datatable.js"></script>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

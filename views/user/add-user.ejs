@@ -11,21 +11,56 @@
         </header>
         <main class="main-content">
           <div class="scrolling-container">
-            <form class="input-form" action="<%= edit ? '/edit-user' : 'add-user' %>" method="POST" autocomplete="off">
+            <form class="input-form" action="<%= edit ? '/edit-user' : '/add-user' %>" method="POST" autocomplete="off">
+              <label class="container">Admin
+                <input type="checkbox" name="is_admin" id="admin-check" onclick="checkAdmin()">
+                <span class="checkmark"></span>
+              </label>
                 <h3>Nome de Usuário:</h3>
-                <input class="text-input" type="text" name="username" value="<%= edit ? user.username : '' %>">
+                <input class="text-input" type="text" name="username" value="<%= edit ? user.username : '' %>" required>
                 <% if(!edit){ %>
                     <h3>Senha:</h3>
-                    <input class="text-input" type="password" name="password">
+                    <input class="text-input" type="password" name="password" id="password" onkeyup="check()" required>
                     <h3>Repetir Senha:</h3>
-                    <input class="text-input" type="password" name="password2">
+                    <input class="text-input" type="password" name="password2" id="password2" onkeyup="check()" required>
+                    <script>
+                      var check = function() {
+                        if (document.getElementById('password').value ==
+                          document.getElementById('password2').value) {
+                          document.getElementById('password2').style.borderBottom = '2px solid #23A025';
+                          document.getElementById('password2').style.setProperty('--focus-color', '#23A025')
+                        } else {
+                          document.getElementById('password2').style.borderBottom = '2px solid #AD2828';
+                          document.getElementById('password2').style.setProperty('--focus-color', '#AD2828')
+                        }
+                      } 
+                    </script>
                 <% } %>
                 <% if(unidade){ %>
+                  <sector class="acesso-unidades" id="acesso-unidades">
                     <h3>Acesso a:</h3>
-                    <% for(u of unidade){ %>
-                        <input type="checkbox" value="<%= u.id %>" name="ex"><%= u.nome %><br>
-                    <% } %>
+                    <div style="display: flex; flex-flow: row wrap; justify-content: center; gap: 1em;">
+                      <% for(u of unidade){ %>
+                        <label class="container" style="width: 5em;"><%= u.nome %>
+                          <input type="checkbox" value="<%= u.id %>" name="ex">
+                          <span class="checkmark"></span>
+                        </label>
+                      <% } %>
+                    </div>
+                  </sector>
+                    
                 <% } %>
+                <script>
+                  var unidades = document.getElementById('acesso-unidades')
+                  var admin = document.getElementById('admin-check')
+                  var checkAdmin = function() {
+                    if(admin.checked){
+                      unidades.style.display = 'none'
+                    } else {
+                      unidades.style.display = 'block'
+                    }
+                  }
+                </script>
                 <input class="confirma" type="submit" value="Cadastrar">
             </form>
           </div>

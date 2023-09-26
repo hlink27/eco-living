@@ -45,3 +45,13 @@
     border-radius: 8px;
     margin-top: 1.5rem;
 }
+
+.delete-icon {
+    height: 2em;
+    width: 2em;
+}
+
+.delete-icon img{
+    height: 100%;
+    width: 100;
+}

@@ -5,13 +5,17 @@ const bcrypt = require('bcryptjs')
 exports.getAddUser = (req, res, next) => {
     Unidade.findAll()
     .then(unidade => {
-        res.render('user/add-user', {
-            pageTitle: 'Adicionar Usuário',
-            path: '/user/add-user',
-            unidade: unidade,
-            edit: false,
-            user: req.session.user
-        });
+        User.findAll()
+        .then(usuario => {
+            res.render('user/add-user', {
+                pageTitle: 'Adicionar Usuário',
+                path: '/user/add-user',
+                unidade: unidade,
+                edit: false,
+                usuario: usuario,
+                user: req.session.user
+            });
+        })
     })
 }
 
@@ -45,5 +49,17 @@ exports.postAddUser = (req, res, next) => {
         } else {
             res.redirect('/add-user')
         }
+    })
+}
+
+exports.getListUser = (req, res, next) => {
+    User.findAll()
+    .then(usuario => {
+        res.render('user/list-user', {
+            pageTitle: 'Listar Usuário',
+            path: '/user/list-user',
+            usuario: usuario,
+            user: req.session.user
+        });
     })
 }

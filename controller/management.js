@@ -252,12 +252,12 @@ exports.postEditSubtema = (req, res, next) => {
 
 exports.postDeleteSubtema = (req, res, next) => {
     var subtemaId = req.body.subtemaId
-    var unidade = req.body.unidadeId
+    var estrutura = req.body.estruturaId
     Subtema.findByPk(subtemaId)
     .then(subtema => {
         subtema.destroy()
     })
     .then(result => {
-        res.redirect(`/unidade/${unidade}`)
+        res.redirect(`/estrutura/${estrutura}`)
     })
 }

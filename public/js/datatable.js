@@ -2,7 +2,7 @@ $(document).ready(function () {
     $('#myTable').DataTable({
         // Opções de configuração
         "paging": true,
-        "lengthMenu": [25, 50, 100],
+        "lengthChange": false,
         "searching": true,
         "ordering": true,
         "info": false,

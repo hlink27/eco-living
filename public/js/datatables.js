@@ -4311,9 +4311,9 @@
 		var input = '<input type="search" class="'+classes.sFilterInput+'"/>';
 	
 		var str = language.sSearch;
-		str = str.match(/_INPUT_/) ?
+		str = /* str.match(/_INPUT_/) ?
 			str.replace('_INPUT_', input) :
-			str+input;
+			str */ input;
 	
 		var filter = $('<div/>', {
 				'id': ! features.f ? tableId+'_filter' : null,

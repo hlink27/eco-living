@@ -133,9 +133,10 @@ nav {
     margin: 0 auto;
     width: 8em;
     height: 8em;
-    border-radius: 50%;
+    border-radius: 12px;
     overflow: hidden;
     background-color: white;
+    box-shadow: 5px 5px 5px 2px #9c9c9c;
 }
 .imagem-ficha img {
     width: 100%;

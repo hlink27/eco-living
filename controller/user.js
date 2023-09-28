@@ -74,3 +74,44 @@ exports.postDelete = (req, res, next) => {
         res.redirect('/list-user')
     })
 }
+
+exports.getEditUser = (req, res, next) => {
+    const userId = req.params.userId
+    User.findByPk(userId)
+    .then(usuario => {
+        Unidade.findAll()
+        .then(unidade => {
+            res.render('user/add-user', {
+                pageTitle: 'Editar Usuário',
+                path: '/user/add-user',
+                usuario: usuario,
+                user: req.session.user,
+                unidade: unidade,
+                edit: true
+            })
+        })
+    })
+}
+
+exports.postEditUser = (req, res, next) => {
+    var username = req.body.username
+    var is_admin = req.body.is_admin
+    var os = req.body.ex
+    var userId = req.body.userId
+    User.findOne({where: {username: username}})
+    .then(user => {
+        if(!user){
+            User.findByPk(userId)
+            .then(usuario => {
+                os = os.toString()
+                usuario.username = username
+                usuario.is_admin = is_admin
+                usuario.os = os
+                usuario.save()
+                res.redirect('/list-user')
+            })
+        } else {
+            res.redirect('/list-user')
+        }
+    })
+}

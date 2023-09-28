@@ -10,14 +10,20 @@
           </div>
         </header>
         <main class="main-content">
+
+          <% console.log(usuario) %>
+
+
+
           <div class="scrolling-container">
             <form class="input-form" action="<%= edit ? '/edit-user' : '/add-user' %>" method="POST" autocomplete="off">
               <label class="container">Admin
-                <input type="checkbox" name="is_admin" id="admin-check" onclick="checkAdmin()">
+                <input type="checkbox" name="is_admin" id="admin-check" onclick="checkAdmin()" 
+                <%= edit ? (usuario.is_admin == null ? '' : 'checked' ) : '' %>>
                 <span class="checkmark"></span>
               </label>
                 <h3>Nome de Usuário:</h3>
-                <input class="text-input" type="text" name="username" value="<%= edit ? user.username : '' %>" required>
+                <input class="text-input" type="text" name="username" value="<%= edit ? usuario.username : '' %>" required>
                 <% if(!edit){ %>
                     <h3>Senha:</h3>
                     <input class="text-input" type="password" name="password" id="password" onkeyup="check()" required>
@@ -35,20 +41,29 @@
                         }
                       } 
                     </script>
+                <% } else { %>
+                  <input type="hidden" name="userId" value="<%= usuario.id %>">
                 <% } %>
                 <% if(unidade){ %>
                   <sector class="acesso-unidades" id="acesso-unidades">
                     <h3>Acesso a:</h3>
                     <div style="display: flex; flex-flow: row wrap; justify-content: center; gap: 1em;">
+                      <% 
+                      var testeArray = []
+                      if(edit){
+                        if(usuario.os){
+                          testeArray = usuario.os.split(',')
+                        }
+                      } %>
                       <% for(u of unidade){ %>
                         <label class="container" style="width: 5em;"><%= u.nome %>
-                          <input type="checkbox" value="<%= u.id %>" name="ex">
+                          <input type="checkbox" value="<%= u.id %>" name="ex" 
+                          <%= edit ? (testeArray.includes(u.id.toString()) ? 'checked' : '') : '' %>>
                           <span class="checkmark"></span>
                         </label>
                       <% } %>
                     </div>
                   </sector>
-                    
                 <% } %>
                 <script>
                   var unidades = document.getElementById('acesso-unidades')

@@ -484,10 +484,10 @@ table.dataTable td {
 .dataTables_wrapper .dataTables_filter input {
   border: 1px solid #aaa;
   border-radius: 3px;
-  padding: 5px;
+  padding: 8px;
+  width: 90%;
   background-color: transparent;
   color: inherit;
-  margin-left: 3px;
 }
 .dataTables_wrapper .dataTables_info {
   clear: both;

@@ -1,17 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Mohave:wght@300;500&display=swap');
+
 body {
     margin: 0;
     background-color: #E6EFEE;
     font: normal 1em "Nunito Sans", sans-serif; 
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Reem+Kufi+Fun&display=swap');
 .system-title {
-  color: #ffffff;
-  font-size: 20px !important ;
   display: table-cell;
+  margin: 0 !important;
+  font-family: 'Mohave', sans-serif;
+  font-size: 24px !important ;
+  color: #ffffff;
   text-align: center;
-  font-family: 'Reem Kufi Fun', sans-serif;
 }
+.font-light { font-weight: 300 }
+.font-regular { font-weight: 500 }
   .wrapper {
       min-width: 360px;
       max-width: 450px;
@@ -130,9 +134,12 @@ nav {
   }
 
   .imagem-ficha {
-    margin: 0 auto;
+    box-sizing: border-box;
     width: 8em;
     height: 8em;
+    margin: 0 auto;
+    padding: 24px;
+    background-color: white;
     border-radius: 50%;
     overflow: hidden;
     background-color: white;
@@ -141,6 +148,7 @@ nav {
     align-items: center;
     /* box-shadow: 5px 5px 5px 2px #9c9c9c; */
 }
+
 .imagem-ficha img {
     width: 70%;
     height: 70%;
@@ -172,13 +180,13 @@ nav {
 .index-menu {
     margin: 4em 1em;
     display: grid;
-    grid-template-columns: 33% 34% 33%;
-    gap: 6px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
 }
 
 .index-menu .item {
-    width: 110px;
-    height: 110px;
+    width: 100%;
+    height: 100%;
     background-color: #ffffff;
     border-radius: 8px;
     display: flex;

@@ -12,4 +12,7 @@ router.get('/delete-user/:userId', isAuth, isAdmin, userController.postDelete)
 
 router.get('/list-user', isAuth, isAdmin, userController.getListUser)
 
+router.get('/edit-user/:userId', isAuth, isAdmin, userController.getEditUser)
+router.post('/edit-user', isAuth, isAdmin, userController.postEditUser)
+
 module.exports = router

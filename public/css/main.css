@@ -142,11 +142,16 @@ nav {
     background-color: white;
     border-radius: 50%;
     overflow: hidden;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* box-shadow: 5px 5px 5px 2px #9c9c9c; */
 }
 
 .imagem-ficha img {
-    width: 100%;
-    height: 100%;
+    width: 70%;
+    height: 70%;
     object-fit: contain;
     object-position: center center;
 }

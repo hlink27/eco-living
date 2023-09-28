@@ -58,7 +58,7 @@ exports.postEditUnidade = (req, res, next) => {
     .then(unidade => {
         unidade.nome = nome
         if(img){
-            unidade.img = img.path
+            unidade.img = img.path.replace('public', '')
         }
         unidade.save()
     })

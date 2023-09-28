@@ -180,13 +180,15 @@ nav {
 .index-menu {
     margin: 4em 1em;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
     gap: 12px;
 }
 
 .index-menu .item {
+    position: relative;
     width: 100%;
     height: 100%;
+    aspect-ratio: 1/1;
     background-color: #ffffff;
     border-radius: 8px;
     display: flex;
@@ -194,7 +196,7 @@ nav {
     justify-content: center;
     align-items: center;
     box-shadow: 0 4px 7px #d6d6d6;
-    padding: 20px;
+    padding: 24px;
     box-sizing: border-box;
     overflow: hidden;
 }
@@ -214,8 +216,9 @@ a {
 }
 
 .unidade-nome {
-    display: table-cell;
-    text-align: center;
+    position: absolute;
+    bottom: -10px;
+    font-size: 14px;
 }
  
 /* Index */

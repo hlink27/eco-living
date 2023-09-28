@@ -11,7 +11,7 @@ router.get('/edit-unidade/:unidadeId', isAuth, isAdmin, mgmtController.getEditUn
 router.post('/edit-unidade', isAuth, isAdmin, mgmtController.postEditUnidade)
 router.post('/delete-unidade', isAuth, isAdmin, mgmtController.postDeleteUnidade)
 
-router.get('/add-tema/:unidadeId', isAuth, isAdmin, mgmtController.getAddTema)
+router.get('/add-tema/:estruturaId', isAuth, isAdmin, mgmtController.getAddTema)
 router.post('/add-tema', isAuth, isAdmin, mgmtController.postAddTema)
 router.get('/edit-tema/:temaId', isAuth, isAdmin, mgmtController.getEditTema)
 router.post('/edit-tema', isAuth, isAdmin, mgmtController.postEditTema)

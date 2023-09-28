@@ -1,7 +1,9 @@
 const Unidade = require('../model/unidade')
 const Tema = require('../model/tema')
 const Subtema = require('../model/subtema')
+const Estrutura = require('../model/estrutura')
 
+/* Unidade */
 exports.getAddUnidade = (req, res, next) => {
     res.render('management/add-unidade', {
         pageTitle: 'Adicionar Unidade',
@@ -82,14 +84,14 @@ exports.postDeleteUnidade = (req, res, next) => {
 }
 
 exports.getAddTema = (req, res, next) => {
-    const unidadeId = req.params.unidadeId
-    Unidade.findByPk(unidadeId)
-    .then(unidade => {
+    const estruturaId = req.params.estruturaId
+    Estrutura.findByPk(estruturaId)
+    .then(estrutura => {
         res.render('management/add-unidade', {
             pageTitle: 'Adicionar Tema',
             path: '/management/add-unidade',
             subtema: '',
-            unidade: unidade.id,
+            estrutura: estrutura.id,
             unidadeBool: false,
             temaBool: true,
             subtemaBool: false,
@@ -101,16 +103,16 @@ exports.getAddTema = (req, res, next) => {
 
 exports.postAddTema = (req, res, next) => {
     var nome = req.body.nome
-    var unidadeId = req.body.unidadeId
+    var estruturaId = req.body.estruturaId
     var progresso = req.body.progressbar
     progresso ? progresso = 1 : progresso = 0
     Tema.create({
         nome: nome,
-        unidade_id: unidadeId,
+        estrutura_id: estruturaId,
         progresso: progresso
     })
     .then(result => {
-        res.redirect(`/unidade/${unidadeId}`)
+        res.redirect(`/estrutura/${estruturaId}`)
     })
     .catch(err => {
         console.log(err)
@@ -119,7 +121,7 @@ exports.postAddTema = (req, res, next) => {
 
 exports.getEditTema = (req, res, next) => {
     var temaId = req.params.temaId
-    Tema.findByPk(temaId, {include: {model: Unidade}})
+    Tema.findByPk(temaId, {include: {model: Estrutura}})
     .then(tema => {
         res.render('management/add-unidade', {
             pageTitle: 'Editar Tema',
@@ -129,7 +131,7 @@ exports.getEditTema = (req, res, next) => {
             temaBool: true,
             subtemaBool: false,
             edit: true,
-            unidade: tema.unidade.id,
+            estrutura: tema.estrutura.id,
             user: req.session.user
         });
     })
@@ -140,7 +142,7 @@ exports.postEditTema = (req, res, next) => {
     var progresso = req.body.progressbar
     progresso ? progresso = 1 : progresso = 0
     var temaId = req.body.temaId
-    var unidadeId = req.body.unidadeId
+    var estruturaId = req.body.estruturaId
     Tema.findByPk(temaId)
     .then(tema => {
         tema.nome = nome,
@@ -148,7 +150,7 @@ exports.postEditTema = (req, res, next) => {
         tema.save()
     })
     .then(result => {
-        res.redirect(`/unidade/${unidadeId}`)
+        res.redirect(`/estrutura/${estruturaId}`)
     })
     .catch(err => {
         console.log(err)
@@ -157,13 +159,13 @@ exports.postEditTema = (req, res, next) => {
 
 exports.postDeleteTema = (req, res, next) => {
     var temaId = req.body.temaId
-    var unidadeId = req.body.unidadeId
+    var estruturaId = req.body.estruturaId
     Tema.findByPk(temaId)
     .then(tema => {
         tema.destroy()
     })
     .then(result => {
-        res.redirect(`/unidade/${unidadeId}`)
+        res.redirect(`/estrutura/${estruturaId}`)
     })
 }
 
@@ -174,7 +176,7 @@ exports.getAddSubtema = (req, res, next) => {
         res.render('management/add-unidade', {
             pageTitle: 'Adicionar Subtema',
             path: '/management/add-unidade',
-            unidade: tema.unidade_id,
+            estrutura: tema.estrutura_id,
             subtema: '',
             tema: tema,
             unidadeBool: false,
@@ -190,14 +192,14 @@ exports.postAddSubmeta = (req, res, next) => {
     var nome = req.body.nome
     var sts = req.body.sts
     var temaId = req.body.temaId
-    var unidadeId = req.body.unidadeId
+    var estruturaId = req.body.estruturaId
     Subtema.create({
         nome: nome,
         sts: sts,
         tema_id: temaId
     })
     .then(result => {
-        res.redirect(`/unidade/${unidadeId}`)
+        res.redirect(`/estrutura/${estruturaId}`)
     })
     .catch(err => {
         console.log(err)
@@ -210,7 +212,7 @@ exports.getEditSubtema = (req, res, next) => {
         { include: [{
             model: Tema,
             include: [{
-            model: Unidade,
+            model: Estrutura,
             }]
         }]}
     )
@@ -223,7 +225,7 @@ exports.getEditSubtema = (req, res, next) => {
             temaBool: false,
             subtemaBool: true,
             edit: true,
-            unidade: subtema.tema.unidade.id,
+            estrutura: subtema.tema.estrutura.id,
             user: req.session.user
         });
     })
@@ -233,7 +235,7 @@ exports.postEditSubtema = (req, res, next) => {
     var nome = req.body.nome
     var sts = req.body.sts
     var subtema = req.body.subtemaId
-    var unidade = req.body.unidadeId
+    var estrutura = req.body.estruturaId
     Subtema.findByPk(subtema)
     .then(subtema => {
         subtema.nome = nome,
@@ -241,7 +243,7 @@ exports.postEditSubtema = (req, res, next) => {
         subtema.save()
     })
     .then(result => {
-        res.redirect(`/unidade/${unidade}`)
+        res.redirect(`/estrutura/${estrutura}`)
     })
     .catch(err => {
         console.log(err)

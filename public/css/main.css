@@ -308,3 +308,20 @@ a {
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+
+/* ESTRUTURA */
+
+.container-estrutura {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  border-radius: 8px;
+  background-color: #ffffff;
+  margin-bottom: 1.5em;
+}
+
+.estrutura-content {
+  background-color: transparent !important;
+}
+
+/*  */

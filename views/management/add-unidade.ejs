@@ -41,8 +41,7 @@
                   <h2>Barra de Progresso:</h2>
                   <input type="checkbox" name="progressbar" <%= edit ? (tema.progresso == 1 ? 'checked' : '') : '' %>>
                 </div>
-                
-                <input type="hidden" name="unidadeId" value="<%= unidade %>">
+                <input type="hidden" name="estruturaId" value="<%= estrutura %>">
                 <% if(edit) { %>
                   <input type="hidden" name="temaId" value="<%= tema.id %>">
                 <% } %>
@@ -50,14 +49,13 @@
               </form>
               <% if(edit){ %>
                 <form action="/delete-tema" method="POST">
-                  <input type="hidden" name="unidadeId" value="<%= unidade %>">
+                  <input type="hidden" name="estruturaId" value="<%= estrutura %>">
                   <input type="hidden" name="temaId" value="<%= tema.id %>">
                   <button class="excluir" type="submit">Deletar</button>
                 </form>
               <% } %>
 
             <% } else { %>
-
               <!-- ADICIONAR SUBTEMA -->
               <form class="input-form" action="<%= edit ? `/edit-subtema` : `/add-subtema` %>" method="POST" autocomplete="off">
                 <h2>Título:</h2>
@@ -73,12 +71,12 @@
                 <% } else { %>
                   <input type="hidden" name="subtemaId" value="<%= subtema.id %>">
                 <% } %>
-                <input type="hidden" name="unidadeId" value="<%= unidade %>">
+                <input type="hidden" name="estruturaId" value="<%= estrutura %>">
                 <input class="confirma" type="submit">
               </form>
               <% if(edit){ %>
                 <form action="/delete-subtema" method="POST">
-                  <input type="hidden" name="unidadeId" value="<%= unidade %>">
+                  <input type="hidden" name="estruturaId" value="<%= estrutura %>">
                   <input type="hidden" name="subtemaId" value="<%= subtema.id %>">
                   <button class="excluir" type="submit">Deletar</button>
                 </form>

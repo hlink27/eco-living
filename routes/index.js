@@ -8,4 +8,6 @@ router.get('/', isAuth, indexController.getIndex)
 
 router.get('/unidade/:unidade', isAuth, indexController.getUnidade)
 
+router.get('/estrutura/:estruturaId', isAuth, indexController.getEstrutura)
+
 module.exports = router

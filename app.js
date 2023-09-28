@@ -11,6 +11,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store)
 const Unidade = require('./model/unidade')
 const Tema = require('./model/tema')
 const Subtema = require('./model/subtema')
+const Estrutura = require('./model/estrutura')
 const User = require('./model/user')
 
 //Route importing
@@ -89,8 +90,8 @@ app.use(userController)
 //app.use(errorController.get404)
 
 //Associations
-
-Tema.belongsTo(Unidade, {foreignKey: { name: 'unidade_id' }})
+Estrutura.belongsTo(Unidade, {foreignKey: {name: 'unidade_id'}})
+Tema.belongsTo(Estrutura, {foreignKey: { name: 'estrutura_id' }})
 Subtema.belongsTo(Tema, {foreignKey: { name: 'tema_id' }})
 
 sequelize

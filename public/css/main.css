@@ -133,7 +133,7 @@ nav {
     margin: 0 auto;
     width: 8em;
     height: 8em;
-    border-radius: 12px;
+    border-radius: 50%;
     overflow: hidden;
     background-color: white;
     box-shadow: 5px 5px 5px 2px #9c9c9c;

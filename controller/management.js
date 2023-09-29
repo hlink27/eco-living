@@ -10,6 +10,7 @@ exports.getAddUnidade = (req, res, next) => {
         path: '/management/add-unidade',
         unidadeBool: true,
         temaBool: false,
+        estruBool: false,
         subtemaBool: false,
         edit: false,
         user: req.session.user
@@ -45,6 +46,7 @@ exports.getEditUnidade = (req, res, next) => {
             unidade: unidade,
             unidadeBool: true,
             temaBool: false,
+            estruBool: false,
             subtemaBool: false,
             edit: true,
             user: req.session.user
@@ -83,6 +85,91 @@ exports.postDeleteUnidade = (req, res, next) => {
     })
 }
 
+/* Estrutura */
+exports.getAddEstrutura = (req, res, next) => {
+    var unidadeId = req.params.unidadeId
+    Unidade.findByPk(unidadeId)
+    .then(unidade => {
+        res.render('management/add-unidade', {
+            pageTitle: 'Adicionar Estrutura',
+            path: '/management/add-unidade',
+            subtema: '',
+            unidade: unidade.id,
+            unidadeBool: false,
+            estruBool: true,
+            temaBool: false,
+            subtemaBool: false,
+            edit: false,
+            user: req.session.user
+        });
+    })
+}
+
+exports.postAddEstrutura = (req, res, next) => {
+    var nome = req.body.nome
+    var unidadeId = req.body.unidadeId
+    Estrutura.create({
+        nome: nome,
+        unidade_id: unidadeId
+    })
+    .then(result => {
+        res.redirect(`/unidade/${unidadeId}`)
+    })
+    .catch(err => {
+        console.log(err)
+    })
+}
+
+exports.getEditEstrutura = (req, res, next) => {
+    var estruturaId = req.params.estruturaId
+    Estrutura.findByPk(estruturaId, {include: {model: Unidade}})
+    .then(estrutura => {
+        res.render('management/add-unidade', {
+            pageTitle: 'Editar Estrutura',
+            path: '/management/add-unidade',
+            subtema: '',
+            unidade: estrutura.unidade.id,
+            estrutura: estrutura,
+            unidadeBool: false,
+            estruBool: true,
+            temaBool: false,
+            subtemaBool: false,
+            edit: true,
+            user: req.session.user
+        });
+    })
+}
+
+exports.postEditEstrutura = (req, res, next) => {
+    var nome = req.body.nome
+    var estrutura = req.body.estruturaId
+    var unidadeId = req.body.unidadeId
+    Estrutura.findByPk(estrutura)
+    .then(estrutura => {
+        estrutura.nome = nome
+        estrutura.save()
+    })
+    .then(result => {
+        res.redirect(`/unidade/${unidadeId}`)
+    })
+    .catch(err => {
+        console.log(err)
+    })
+}
+
+exports.postDeleteEstrutura = (req, res, next) => {
+    var unidadeId = req.body.unidadeId
+    var estruturaId = req.body.estruturaId
+    Estrutura.findByPk(estruturaId)
+    .then(estrutura => {
+        estrutura.destroy()
+    })
+    .then(result => {
+        res.redirect(`/unidade/${unidadeId}`)
+    })
+}
+
+/* Tema */
 exports.getAddTema = (req, res, next) => {
     const estruturaId = req.params.estruturaId
     Estrutura.findByPk(estruturaId)
@@ -93,6 +180,7 @@ exports.getAddTema = (req, res, next) => {
             subtema: '',
             estrutura: estrutura.id,
             unidadeBool: false,
+            estruBool: false,
             temaBool: true,
             subtemaBool: false,
             edit: false, 
@@ -129,6 +217,7 @@ exports.getEditTema = (req, res, next) => {
             tema: tema,
             unidadeBool: false,
             temaBool: true,
+            estruBool: false,
             subtemaBool: false,
             edit: true,
             estrutura: tema.estrutura.id,
@@ -169,6 +258,7 @@ exports.postDeleteTema = (req, res, next) => {
     })
 }
 
+/* Subtema */
 exports.getAddSubtema = (req, res, next) => {
     var temaId = req.params.temaId
     Tema.findByPk(temaId)
@@ -180,6 +270,7 @@ exports.getAddSubtema = (req, res, next) => {
             subtema: '',
             tema: tema,
             unidadeBool: false,
+            estruBool: false,
             temaBool: false,
             subtemaBool: true,
             edit: false,
@@ -222,6 +313,7 @@ exports.getEditSubtema = (req, res, next) => {
             path: '/management/add-unidade',
             subtema: subtema,
             unidadeBool: false,
+            estruBool: false,
             temaBool: false,
             subtemaBool: true,
             edit: true,

@@ -11,9 +11,7 @@
         </header>
         <main class="main-content">
           <div class="scrolling-container">
-            <% if(unidadeBool){ %>
-
-              <!-- ADICIONAR UNIDADE -->
+            <% if(unidadeBool){ %> <!-- ADICIONAR UNIDADE -->
               <form class="input-form" action="<%= edit ? '/edit-unidade' : '/add-unidade' %>" method="POST" enctype="multipart/form-data" autocomplete="off">
                 <h2>Título:</h2>
                 <input type="text" class="text-input" name="nome" value="<%= edit ? unidade.nome : '' %>" required>
@@ -30,10 +28,7 @@
                   <button class="excluir" type="submit">Deletar</button>
                 </form>
               <% } %>
-
-            <% } else if(temaBool){ %>
-
-              <!-- ADICIONAR TEMA -->
+            <% } else if(temaBool){ %> <!-- ADICIONAR TEMA -->
               <form class="input-form" action="<%= edit ? `/edit-tema` : `/add-tema` %>" method="POST" autocomplete="off">
                 <h2>Título:</h2>
                 <input class="text-input" type="text" name="nome" value="<%= edit ? tema.nome : '' %>" required><br>
@@ -54,9 +49,27 @@
                   <button class="excluir" type="submit">Deletar</button>
                 </form>
               <% } %>
+            <% } else if(estruBool) { %> <!-- ADICIONAR ESTRUTURA -->
 
-            <% } else { %>
-              <!-- ADICIONAR SUBTEMA -->
+              <form class="input-form" action="<%= edit ? `/edit-estrutura` : `/add-estrutura` %>" method="POST" autocomplete="off">
+                <h2>Título:</h2>
+                <input class="text-input" type="text" name="nome" value="<%= edit ? estrutura.nome : '' %>" required><br>
+                <input type="hidden" name="unidadeId" value="<%= unidade %>">
+                <% if(edit) { %>
+                  <input type="hidden" name="estruturaId" value="<%= estrutura.id %>">
+                <% } %>
+                <input class="confirma" type="submit">
+              </form>
+              <% if(edit){ %>
+                <form action="/delete-estrutura" method="POST">
+                  <input type="hidden" name="estruturaId" value="<%= estrutura.id %>">
+                  <input type="hidden" name="unidadeId" value="<%= unidade %>">
+                  <button class="excluir" type="submit">Deletar</button>
+                </form>
+              <% } %>
+
+            <% } else { %> <!-- ADICIONAR SUBTEMA -->
+              
               <form class="input-form" action="<%= edit ? `/edit-subtema` : `/add-subtema` %>" method="POST" autocomplete="off">
                 <h2>Título:</h2>
                 <input class="text-input" type="text" name="nome" required value="<%= edit ? `${subtema.nome}` : `` %>"><br>
@@ -81,7 +94,7 @@
                   <button class="excluir" type="submit">Deletar</button>
                 </form>
               <% } %>
-            <% }%>
+            <% } %>
           </div>
         </main>
       </div>

@@ -21,7 +21,9 @@
               </div>
             </header>
             <main class="main-content">
-                <h2><%= estrutura.nome %></h2>
+                <a href="/edit-estrutura/<%= estrutura.id %>" class="item-name">
+                  <h2><%= estrutura.nome %></h2>
+                </a>
                 <div class="scrolling-container">
                 <% for(t of tema){ %>
                   <% var subs = [] %>

@@ -12,10 +12,9 @@
                 <div class="unity-title">
                   <div class="espacamento"></div>
                   <a href="/edit-unidade/<%= unidade.id %>"><h1 class="name"><%= unidade.nome %></h1></a>
-                  
                     <div class="espacamento">
                       <% if(user.is_admin === 1){ %>
-                        <a href="" class="add-tema">Add Estr.</a>
+                        <a href="/add-estrutura/<%= unidade.id %>" class="add-tema">Add Estr.</a>
                       <% } %>
                     </div>
                 </div>

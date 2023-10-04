@@ -6,6 +6,7 @@ const flash = require('connect-flash')
 const multer = require('multer')
 const sequelize = require('./util/database')
 const SequelizeStore = require('connect-session-sequelize')(session.Store)
+const error404 = require('./controller/404')
 
 //Model importing
 const Unidade = require('./model/unidade')
@@ -86,8 +87,7 @@ app.use(indexRouter)
 app.use(mgmtController)
 app.use(authController)
 app.use(userController)
-
-//app.use(errorController.get404)
+app.use(error404.get404)
 
 //Associations
 Estrutura.belongsTo(Unidade, {foreignKey: {name: 'unidade_id'}})
@@ -96,7 +96,7 @@ Subtema.belongsTo(Tema, {foreignKey: { name: 'tema_id' }})
 
 sequelize
     .sync({/* force: true */})
-    .then(farm => {
+    .then(u => {
         User.findAll()
         .then(user => {
             if(user.length == 0){

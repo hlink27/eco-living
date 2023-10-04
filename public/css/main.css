@@ -324,3 +324,28 @@ a {
 }
 
 /*  */
+
+.password-reset {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 10em;
+}
+
+.password-reset .space {
+  border: 1px solid #4d4d4d;
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  gap: 1em;
+}
+
+.password-reset .new {
+  color: #BD2D2D;
+  font-size: larger;
+  font-weight: bolder;
+  font-family: monospace;
+}

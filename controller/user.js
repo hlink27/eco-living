@@ -115,3 +115,39 @@ exports.postEditUser = (req, res, next) => {
         }
     })
 }
+
+const gerarSenha = (n) => {
+    if(n > 1){
+        var caracter = 'ab0cde1f2ghi3jk4lm5no67pq8rst9uvwxyz';
+        var novaSenha = "";
+        for(var x = 1; x <= n; x++){
+            var select = Math.floor(Math.random() * caracter.length);
+            novaSenha += caracter.charAt(select)
+        }
+        return novaSenha
+    }
+}
+exports.resetPassword = (req, res, next) => {
+    var userId = req.params.userId
+    User.findByPk(userId)
+    .then(usuario => {
+        var newPassword = gerarSenha(12)
+        console.log('nova senha: ', newPassword)
+        return bcrypt
+        .hash(newPassword, 12)
+        .then(senhaHashed => {
+            console.log('senha hashada: ', senhaHashed)
+            usuario.password = senhaHashed
+            usuario.save()
+        })
+        .then(result => {
+            res.render('user/password-reset', {
+                pageTitle: 'Senha Redefinida',
+                path: '/user/password-reset',
+                usuario: usuario,
+                user: req.session.user,
+                newPassword: newPassword
+            })
+        })
+    })
+}

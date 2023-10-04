@@ -2,37 +2,37 @@
   </head>
   <body>
     <%- include('../includes/nav.ejs') %>
-            <div class="wrapper">
-              <div class="card">
-            <header class="main-header">
-              <div class="brand">
-                <a href="/unidade/<%= unidade.id %>">
-                  <div class="imagem-ficha">
-                    <img src="<%= unidade.img %>" alt="" class="logo">
-                  </div>
-                </a>
-                <div class="unity-title">
-                  <div class="espacamento"></div>
-                  <a href="/edit-unidade/<%= unidade.id %>"><h1 class="name"><%= unidade.nome %></h1></a>
-                    <div class="espacamento">
-                      <% if(user.is_admin === 1){ %>
-                        <a href="/add-estrutura/<%= unidade.id %>" class="add-tema">+</a>
-                      <% } %>
-                    </div>
+      <div class="wrapper">
+        <div class="card">
+          <header class="main-header">
+            <div class="brand">
+              <a href="/unidade/<%= unidade.id %>">
+                <div class="imagem-ficha">
+                  <img src="<%= unidade.img %>" alt="" class="logo">
+                </div>
+              </a>
+              <div class="unity-title">
+                <div class="espacamento"></div>
+                <a href="/edit-unidade/<%= unidade.id %>"><h1 class="name"><%= unidade.nome %></h1></a>
+                <div class="espacamento">
+                  <% if(user.is_admin === 1){ %>
+                    <a href="/add-estrutura/<%= unidade.id %>" class="add-tema">+</a>
+                  <% } %>
                 </div>
               </div>
-            </header>
-            <main class="main-content estrutura-content">
-                <% for(e of estrutura){ %>
-                  <a href="/estrutura/<%= e.id %>">
-                    <section class="container-estrutura">
-                      <div class="section-title"><%= e.nome %></div>
-                    </section>
-                  </a>
-                <% } %>
-            </main>
-          </div>
-          </div>
+            </div>
+          </header>
+          <main class="main-content estrutura-content">
+            <% for(e of estrutura){ %>
+              <a href="/estrutura/<%= e.id %>">
+                <section class="container-estrutura">
+                  <div class="section-title"><%= e.nome %></div>
+                </section>
+              </a>
+            <% } %>
+          </main>
+        </div>
+      </div>
     <script src="" async defer></script>
   </body>
 </html>

@@ -15,4 +15,6 @@ router.get('/list-user', isAuth, isAdmin, userController.getListUser)
 router.get('/edit-user/:userId', isAuth, isAdmin, userController.getEditUser)
 router.post('/edit-user', isAuth, isAdmin, userController.postEditUser)
 
+router.get('/reset-senha/:userId', isAuth, isAdmin, userController.resetPassword)
+
 module.exports = router

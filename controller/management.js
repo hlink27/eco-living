@@ -41,7 +41,7 @@ exports.getEditUnidade = (req, res, next) => {
     Unidade.findByPk(unidadeId)
     .then(unidade => {
         res.render('management/add-unidade', {
-            pageTitle: 'Editar Tema',
+            pageTitle: 'Editar Unidade',
             path: '/management/add-unidade',
             unidade: unidade,
             unidadeBool: true,

@@ -6,9 +6,11 @@
               <div class="card">
             <header class="main-header">
               <div class="brand">
-                <div class="imagem-ficha">
-                  <img src="<%= estrutura.unidade.img %>" alt="" class="logo">
-                </div>
+                <a href="/unidade/<%= estrutura.unidade.id %>">
+                  <div class="imagem-ficha">
+                    <img src="<%= estrutura.unidade.img %>" alt="" class="logo">
+                  </div>
+                </a>
                 <div class="unity-title">
                   <div class="espacamento"></div>
                   <a href="/edit-unidade/<%= estrutura.unidade.id %>"><h1 class="name"><%= estrutura.unidade.nome %></h1></a>

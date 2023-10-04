@@ -11,10 +11,10 @@
                 </div>
                 <div class="unity-title">
                   <div class="espacamento"></div>
-                  <a href="/edit-estrutura.unidade/<%= estrutura.id %>"><h1 class="name"><%= estrutura.unidade.nome %></h1></a>
+                  <a href="/edit-unidade/<%= estrutura.unidade.id %>"><h1 class="name"><%= estrutura.unidade.nome %></h1></a>
                     <div class="espacamento">
                       <% if(user.is_admin === 1){ %>
-                        <a href="/add-tema/<%= estrutura.id %>" class="add-tema">Add</a>
+                        <a href="/add-tema/<%= estrutura.id %>" class="add-tema">+</a>
                       <% } %>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                     <div style="display: flex; justify-content: space-between; flex-flow: row nowrap;">
                       <a href="/edit-tema/<%= t.id %>"><div class="section-title"><%= t.nome %></div></a>
                       <% if(user.is_admin === 1){ %>
-                        <a href="/add-subtema/<%= t.id %>">Add</a>
+                        <a href="/add-subtema/<%= t.id %>" class="add-tema add-subtema">+</a>
                       <% } %>
                     </div>
                     <% for(s of subtema){

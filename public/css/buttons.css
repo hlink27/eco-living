@@ -15,13 +15,21 @@
 }
 
 .add-tema {
-    width: 45px;
-    height: 45px;
-    background-color: #185d9673;
+    width: 30px;
+    height: 30px;
+    background-color: #559442;
+    border-radius: 50%;
+    font-size: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
+}
+
+.add-subtema {
+    font-size: 15px !important;
+    width: 20px !important;
+    height: 20px !important;
 }
 
 .excluir {

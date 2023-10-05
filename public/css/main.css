@@ -10,7 +10,7 @@ body {
   display: table-cell;
   margin: 0 !important;
   font-family: 'Mohave', sans-serif;
-  font-size: 24px !important ;
+  font-size: 26px !important ;
   color: #ffffff;
   text-align: center;
 }
@@ -20,7 +20,7 @@ body {
       min-width: 360px;
       max-width: 450px;
       height: 100vh;
-      margin: 2.8rem 0 auto;
+      margin: 56px 0 auto;
       background-color: #e7eef0;
   }
 
@@ -30,7 +30,7 @@ body {
   }
 
 nav {
-    background-color: #7786f3 !important;
+    background-color: #1f254a !important;
 }
 
   .logo-container {
@@ -43,7 +43,7 @@ nav {
 
   .name {
       margin-bottom: 0;
-      font-size: 24px;
+      font-size: 20px;
       text-align: center;
   }
   .main-content {
@@ -103,14 +103,19 @@ nav {
       line-height: 1.8;
   }
 
+  .item-name h2 {
+      margin: 0 0 10px;
+      line-height: 1;
+  }
+
   .status {
       display: inline-block;
       margin-left: 6px;
       background-color: #b1b1b1;
       padding: 3px;
       color: white;
-      font-size: 10px;
-      font-weight: bold;
+      font-size: 8px;
+      font-weight: 600;
       border-radius: 4px;
       text-transform: uppercase;
       vertical-align: middle;
@@ -135,10 +140,10 @@ nav {
 
 .imagem-ficha {
   box-sizing: border-box;
-  width: 8em;
-  height: 8em;
+  width: 90px;
+  height: 90px;
   margin: 0 auto;
-  padding: 24px;
+  padding: 16px;
   background-color: white;
   border-radius: 50%;
   overflow: hidden;
@@ -177,7 +182,7 @@ nav {
 /* Index */
 
 .index-menu {
-    margin: 4em 1em;
+    margin: 4.5em 1em;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
     gap: 12px;

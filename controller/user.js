@@ -132,11 +132,9 @@ exports.resetPassword = (req, res, next) => {
     User.findByPk(userId)
     .then(usuario => {
         var newPassword = gerarSenha(12)
-        console.log('nova senha: ', newPassword)
         return bcrypt
         .hash(newPassword, 12)
         .then(senhaHashed => {
-            console.log('senha hashada: ', senhaHashed)
             usuario.password = senhaHashed
             usuario.save()
         })
@@ -147,6 +145,47 @@ exports.resetPassword = (req, res, next) => {
                 usuario: usuario,
                 user: req.session.user,
                 newPassword: newPassword
+            })
+        })
+    })
+}
+
+exports.getMinhaConta = (req, res, next) => {
+    User.findByPk(req.session.user.id)
+    .then(user => {
+        res.render('user/mudar-senha', {
+            pageTitle: 'Redefinir Senha',
+            path: '/user/mudar-senha',
+            user: user
+        })
+    })
+}
+
+exports.postMinhaConta = (req, res, next) => {
+    var oldPassword = req.body.oldPassword
+    var password = req.body.password
+    var confirmPassword = req.body.confirmPassword
+    User.findByPk(req.session.user.id)
+    .then(user => {
+        bcrypt
+        .hash(oldPassword, 12)
+        .then(senhaVelha => {
+            bcrypt
+            .compare(senhaVelha, user.password)
+            .then(result => {
+                console.log(result) //console.log
+                if(result){
+                    if(password == confirmPassword){
+                        bcrypt
+                        .hash(password, 12)
+                        .then(novaSenha => {
+                            user.password = novaSenha
+                            user.save()
+                            return res.redirect('/')
+                        })
+                    }
+                }
+                return res.redirect('/mudar-senha')
             })
         })
     })

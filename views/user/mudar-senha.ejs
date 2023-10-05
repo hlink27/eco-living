@@ -1,0 +1,49 @@
+<%- include('../includes/head.ejs')%>
+<style>
+  .error {
+      color: red;
+  }
+</style>
+  </head>
+  <body>
+    <%- include('../includes/nav.ejs') %>
+    <div class="wrapper">
+        <div class="card">
+          <header class="main-header">
+              <div class="brand">
+                  <h1 class="name"><%= pageTitle %></h1>
+              </div>
+          </header>
+          <main class="main-content">
+            <div class="scrolling-container">
+              <form id="registrationForm" onsubmit="return validateForm()" class="input-form" action="/mudar-senha" method="POST" autocomplete="off">
+                <label for="password">Senha Antiga:</label>
+                <input class="text-input" type="password" id="oldPassword" name="oldPassword" required>
+                <label for="password">Nova Senha:</label>
+                <input class="text-input" type="password" id="password" name="password" required>
+                <label for="confirmPassword">Confirmar Senha:</label>
+                <input class="text-input" type="password" id="confirmPassword" name="confirmPassword" required>
+                <span id="passwordError" class="error"></span>
+                <input class="confirma" type="submit" value="Trocar Senha">
+            </form>
+            <script>
+                function validateForm() {
+                    var password = document.getElementById("password").value;
+                    var confirmPassword = document.getElementById("confirmPassword").value;
+                    var passwordError = document.getElementById("passwordError");
+        
+                    if (password !== confirmPassword) {
+                        passwordError.textContent = "As senhas não coincidem.";
+                        return false; // Impede o envio do formulário
+                    } else {
+                        passwordError.textContent = ""; // Limpa a mensagem de erro
+                        return true; // Permite o envio do formulário
+                    }
+                }
+            </script>
+            </div>
+          </main>
+        </div>
+    </div>
+  </body>
+</html>

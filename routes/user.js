@@ -17,4 +17,7 @@ router.post('/edit-user', isAuth, isAdmin, userController.postEditUser)
 
 router.get('/reset-senha/:userId', isAuth, isAdmin, userController.resetPassword)
 
+router.get('/mudar-senha', isAuth, userController.getMinhaConta)
+router.post('/mudar-senha', isAuth, userController.postMinhaConta)
+
 module.exports = router

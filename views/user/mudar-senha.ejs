@@ -19,6 +19,7 @@
               <form id="registrationForm" onsubmit="return validateForm()" class="input-form" action="/mudar-senha" method="POST" autocomplete="off">
                 <label for="password">Senha Antiga:</label>
                 <input class="text-input" type="password" id="oldPassword" name="oldPassword" required>
+                <span class="error"><%= erro ? erro : '' %></span><br>
                 <label for="password">Nova Senha:</label>
                 <input class="text-input" type="password" id="password" name="password" required>
                 <label for="confirmPassword">Confirmar Senha:</label>

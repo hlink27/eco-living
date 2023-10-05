@@ -151,42 +151,47 @@ exports.resetPassword = (req, res, next) => {
 }
 
 exports.getMinhaConta = (req, res, next) => {
+    var erro = req.query.erro
+    if(erro == 1){
+        erro = 'Senha incorreta'
+    }
     User.findByPk(req.session.user.id)
     .then(user => {
         res.render('user/mudar-senha', {
             pageTitle: 'Redefinir Senha',
             path: '/user/mudar-senha',
-            user: user
+            user: user,
+            erro: erro
         })
     })
 }
 
 exports.postMinhaConta = (req, res, next) => {
-    var oldPassword = req.body.oldPassword
+    var oldPassword = req.body.oldPassword;
     var password = req.body.password
-    var confirmPassword = req.body.confirmPassword
+    var newPassword = req.body.confirmPassword
     User.findByPk(req.session.user.id)
-    .then(user => {
-        bcrypt
-        .hash(oldPassword, 12)
-        .then(senhaVelha => {
-            bcrypt
-            .compare(senhaVelha, user.password)
-            .then(result => {
-                console.log(result) //console.log
-                if(result){
-                    if(password == confirmPassword){
-                        bcrypt
-                        .hash(password, 12)
-                        .then(novaSenha => {
-                            user.password = novaSenha
-                            user.save()
-                            return res.redirect('/')
-                        })
+        .then(user => {
+            return bcrypt.compare(oldPassword, user.password)
+                .then(match => {
+                    if (match) {
+                        if(password == newPassword){
+                           return bcrypt.hash(password, 12)
+                           .then(senhaHashed => {
+                                user.password = senhaHashed
+                                user.save()
+                                return res.redirect('/')
+                           })
+                        } else {
+                            return res.redirect('/mudar-senha?erro=1');
+                        }
+                    } else {
+                        return res.redirect('/mudar-senha?erro=1');
                     }
-                }
-                return res.redirect('/mudar-senha')
-            })
+                });
         })
-    })
-}
+        .catch(err => {
+            console.error(err);
+            res.redirect('/mudar-senha?erro=1');
+        });
+};

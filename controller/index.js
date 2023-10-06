@@ -63,7 +63,6 @@ exports.getEstrutura = (req, res, next) => {
     const estruturaId = req.params.estruturaId
     Estrutura.findOne({where: {id: estruturaId}, include: { model: Unidade, as: 'unidade' }})
     .then(estrutura => {
-        console.log(estrutura)
         Tema.findAll({where: {estrutura_id: estrutura.id}})
         .then(tema => {
             const temaIds = new Set()

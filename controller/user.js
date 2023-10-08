@@ -3,6 +3,10 @@ const Unidade = require('../model/unidade')
 const bcrypt = require('bcryptjs')
 
 exports.getAddUser = (req, res, next) => {
+    var erro = req.params.error
+    if(erro == 1){
+        erro = "Este nome de usuário já existe!"
+    }
     Unidade.findAll()
     .then(unidade => {
         User.findAll()
@@ -13,7 +17,8 @@ exports.getAddUser = (req, res, next) => {
                 unidade: unidade,
                 edit: false,
                 usuario: usuario,
-                user: req.session.user
+                user: req.session.user,
+                erro: erro
             });
         })
     })
@@ -47,7 +52,7 @@ exports.postAddUser = (req, res, next) => {
                 res.redirect('/')
             })
         } else {
-            res.redirect('/add-user')
+            res.redirect('/add-user?erro=1')
         }
     })
 }
@@ -97,13 +102,18 @@ exports.postEditUser = (req, res, next) => {
     var username = req.body.username
     var is_admin = req.body.is_admin
     var os = req.body.ex
+    console.log(os)
+    if(!os){
+        os = null
+    } else {
+        os = os.toString()
+    }
     var userId = req.body.userId
     User.findOne({where: {username: username}})
     .then(user => {
         if(!user){
             User.findByPk(userId)
             .then(usuario => {
-                os = os.toString()
                 usuario.username = username
                 usuario.is_admin = is_admin
                 usuario.os = os

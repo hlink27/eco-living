@@ -10,7 +10,7 @@ nav {
     font-size: 15rem;
     z-index: 1;
     background-color: white;
-    box-shadow: 10px 1px 5px 1px #d6d6d6;
+    box-shadow: 0px 1px 5px 1px var(--sombra);
 }
 
 .mobile-nav-open-icon {

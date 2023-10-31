@@ -3,9 +3,14 @@ const User = require('../model/user')
 const fs = require('fs');
 
 exports.getLogin = (req, res, next) => {
+    var erro = req.query.erro
+    if(erro){
+        erro = 'Usuário ou senha incorreta'
+    }
     res.render('auth/login', {
         path: '/login',
-        pageTitle: 'Login'
+        pageTitle: 'Login',
+        erro: erro
     })
 }
 
@@ -15,7 +20,7 @@ exports.postLogin = (req, res, next) => {
     User.findOne({ where: { username: username } })
         .then(user => {
             if (!user) {
-                return res.redirect('/login')
+                return res.redirect('/login?erro=true')
             }
             bcrypt
                 .compare(senha, user.password)
@@ -28,7 +33,7 @@ exports.postLogin = (req, res, next) => {
                             res.redirect('/')
                         })
                     }
-                    res.redirect('/login')
+                    res.redirect('/login?erro=true')
                 })
                 .catch(err => {
                     console.log(err)

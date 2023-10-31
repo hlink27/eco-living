@@ -3,19 +3,20 @@
 </head>
 <body>
     <div class="campo-login">
-        <div class="imagem-ficha">
-            <img src="/imgs/ecudado.png">
+        <div class="login-img">
+            <img src="/imgs/ecoliving.png">
         </div>
         <div class="board">
             <form class="login-form" method="POST" action="/login">
                 <div class="input-space">
-                    <label>Usuário</label>
-                    <input type="text" name="username">
+                    <input type="text" name="username" placeholder="Usuário">
                 </div>
                 <div class="input-space">
-                    <label>Senha:</label>
-                    <input type="password" name="senha">
+                    <input type="password" name="senha" placeholder="Senha">
                 </div>
+                <% if(erro){ %>
+                    <div style="color: var(--alert);"><%= erro %></div>
+                <% } %>
                 <div class="input-space">
                     <button type="submit">Entrar</button>
                 </div>

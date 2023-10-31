@@ -268,10 +268,17 @@ a {
 
 /* add-unidade forms */
 
+.input-form h2 {
+  color: var(--text-color);
+
+}
+
 .input-form .text-input{
     width: 90%;
+    background-color: transparent;
     border: none;
-    border-bottom: 2px solid black;
+    color: var(--text-color);
+    border-bottom: 2px solid var(--text-color);
     padding: 0.5rem;
     font-size: 1rem;
 }

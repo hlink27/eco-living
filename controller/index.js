@@ -7,7 +7,11 @@ exports.getIndex = (req, res, next) => {
     const user = req.session.user
     if(!user.is_admin){
         var os = user.os
-        var search = os.split(',')
+        if(os){
+            var search = os.split(',')
+        } else {
+            var search = ""
+        }
         Unidade.findAll({
             where: {
                 id: search

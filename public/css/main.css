@@ -32,6 +32,9 @@
     --login-text: #89e966;
     --alert: #ff3030;
   }
+  .list-users img {
+    filter: invert(85%)
+  }
 }
 
 body {
@@ -406,4 +409,11 @@ a {
   font-size: larger;
   font-weight: bolder;
   font-family: monospace;
+}
+
+.list-users th {
+  color: var(--text-color);
+}
+.list-users td {
+  color: var(--text-color);
 }

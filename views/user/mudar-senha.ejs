@@ -17,12 +17,12 @@
           <main class="main-content">
             <div class="scrolling-container">
               <form id="registrationForm" onsubmit="return validateForm()" class="input-form" action="/mudar-senha" method="POST" autocomplete="off">
-                <label for="password">Senha Antiga:</label>
+                <label for="password"><h2>Senha Antiga:</h2></label>
                 <input class="text-input" type="password" id="oldPassword" name="oldPassword" required>
                 <span class="error"><%= erro ? erro : '' %></span><br>
-                <label for="password">Nova Senha:</label>
+                <label for="password"><h2>Nova Senha:</h2></label>
                 <input class="text-input" type="password" id="password" name="password" required>
-                <label for="confirmPassword">Confirmar Senha:</label>
+                <label for="confirmPassword"><h2>Confirmar Senha:</h2></label>
                 <input class="text-input" type="password" id="confirmPassword" name="confirmPassword" required>
                 <span id="passwordError" class="error"></span>
                 <input class="confirma" type="submit" value="Trocar Senha">

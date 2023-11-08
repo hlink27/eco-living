@@ -2,7 +2,7 @@
     <img width="150" height="150" src="public/imgs/ecudado.png">
 </p>
 <p align="center">
-    <img src="https://img.shields.io/badge/ecoliving-v1.0-darkgreen">    
+    <img src="https://img.shields.io/badge/ecoliving-v1.2-darkgreen">    
 </p>
 
 # O que é?

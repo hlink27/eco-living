@@ -71,7 +71,7 @@
             <% } else { %> <!-- ADICIONAR SUBTEMA -->
               
               <form class="input-form" action="<%= edit ? `/edit-subtema` : `/add-subtema` %>" method="POST" autocomplete="off">
-                <h2>Título:</h2>
+                <h2>Título:</h2> 
                 <input class="text-input" type="text" name="nome" required value="<%= edit ? `${subtema.nome}` : `` %>"><br>
                 <h2>Progresso:</h2>
                 <select name="sts" class="input-select">

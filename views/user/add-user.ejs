@@ -17,12 +17,12 @@
                 <%= edit ? (usuario.is_admin == null ? '' : 'checked' ) : '' %>>
                 <span class="checkmark"></span>
               </label>
-                <h3>Nome de Usuário:</h3>
+                <h2>Nome de Usuário:</h2>
                 <input class="text-input" type="text" name="username" value="<%= edit ? usuario.username : '' %>" required>
                 <% if(!edit){ %>
-                    <h3>Senha:</h3>
+                    <h2>Senha:</h2>
                     <input class="text-input" type="password" name="password" id="password" onkeyup="check()" required>
-                    <h3>Repetir Senha:</h3>
+                    <h2>Repetir Senha:</h2>
                     <input class="text-input" type="password" name="password2" id="password2" onkeyup="check()" required>
                     <script>
                       var check = function() {
@@ -41,7 +41,7 @@
                 <% } %>
                 <% if(unidade){ %>
                   <sector class="acesso-unidades" id="acesso-unidades">
-                    <h3>Acesso a:</h3>
+                    <h2>Acesso a:</h2>
                     <div style="display: flex; flex-flow: row wrap; justify-content: center; gap: 1em;">
                       <% 
                       var testeArray = []

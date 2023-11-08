@@ -6,12 +6,16 @@
     gap: 3em;
 }
 
-.campo-login .imagem-ficha {
-    filter: grayscale(100%);
+.login-img {
+    margin: 0 auto;
+    width: 10em;
+}
+.login-img img {
+    width: 100%;
 }
 
 .board {
-    background-color: white;
+    background-color: var(--third-background-color);
     width: 80%;
     margin: 0 auto;
     border-radius: 8px;
@@ -19,6 +23,7 @@
     flex-flow: column;
     justify-content: center;
     align-content: center;
+    color: var(--login-text);
 }
 
 .input-space {
@@ -38,12 +43,21 @@
 
 .login-form input {
     padding: 0.5em;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid var(--text-color);
 }
 
+.login-form ::placeholder {
+    color: var(--login-text);
+    opacity: 0.75; /* Firefox */
+  }
+
 .input-space button {
-    background-color: #3D51FF;
+    background-color: var(--login-text);
     border: none;
     padding: 0.5rem;
-    color: #fff;
+    color: var(--text-color2);
     border-radius: 4px;
 }

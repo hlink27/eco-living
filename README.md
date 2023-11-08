@@ -33,6 +33,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [NodeJS](https://nodejs.org/)
 - [EJS](https://ejs.co/)
 - [Express](https://expressjs.com/pt-br/)
+- [DataTables](https://datatables.net/)
 # Autores
 <table>
   <tr>

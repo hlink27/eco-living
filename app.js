@@ -20,6 +20,7 @@ const indexRouter = require('./routes/index')
 const mgmtController = require('./routes/management')
 const authController = require('./routes/auth')
 const userController = require('./routes/user')
+const abtController = require('./routes/sobre')
 
 const app = express()
 
@@ -87,6 +88,7 @@ app.use(indexRouter)
 app.use(mgmtController)
 app.use(authController)
 app.use(userController)
+app.use(abtController)
 app.use(error404.get404)
 
 //Associations

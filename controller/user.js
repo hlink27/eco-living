@@ -32,6 +32,8 @@ exports.postAddUser = (req, res, next) => {
     var os = req.body.ex
     if(!os){
         os = null
+    } else {
+        os = os.toString()
     }
     User.findOne({where: {username: username}})
     .then(user => {
@@ -39,7 +41,6 @@ exports.postAddUser = (req, res, next) => {
             return bcrypt
             .hash(password, 12)
             .then(senhaHashed => {
-                os = os.toString()
                 const user = new User({
                     username: username,
                     password: senhaHashed,
@@ -99,31 +100,29 @@ exports.getEditUser = (req, res, next) => {
 }
 
 exports.postEditUser = (req, res, next) => {
-    var username = req.body.username
-    var is_admin = req.body.is_admin
-    var os = req.body.ex
-    console.log(os)
-    if(!os){
-        os = null
-    } else {
-        os = os.toString()
+    var username = req.body.username;
+    var is_admin = req.body.is_admin;
+    var os = req.body.ex;
+    console.log(`Primeiro: ${os}`)
+    // Certifique-se de que "os" é um array em JavaScript
+    if(!os) {
+        os = null; // Ou algum valor padrão, se necessário
     }
-    var userId = req.body.userId
-    User.findOne({where: {username: username}})
-    .then(user => {
-        if(!user){
-            User.findByPk(userId)
-            .then(usuario => {
-                usuario.username = username
-                usuario.is_admin = is_admin
-                usuario.os = os
-                usuario.save()
-                res.redirect('/list-user')
-            })
-        } else {
-            res.redirect('/list-user')
-        }
-    })
+    var userId = req.body.userId;
+    User.findByPk(userId)
+        .then(usuario => {
+            console.log(`Segundo: ${os}`)
+            usuario.username = username;
+            usuario.is_admin = is_admin;
+            usuario.os = os.toString();
+            usuario.save()
+        })
+        .then(result => {
+            res.redirect('/list-user');
+        })
+        .catch(err => {
+            console.log(err)
+        })
 }
 
 const gerarSenha = (n) => {

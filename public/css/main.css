@@ -35,6 +35,9 @@
   .list-users img {
     filter: invert(85%)
   }
+  .about-gh-icon {
+    filter: invert(85%)
+  }
 }
 
 body {

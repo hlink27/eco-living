@@ -8,25 +8,6 @@
 # O que é?
 O EcoLiving é um sistema web baseado em Node.js, projetado para gerenciar eficientemente metas corporativas, contratos empresariais e até mesmo objetivos pessoais. Intuitivo e escalável, oferece uma plataforma unificada para estabelecer, monitorar e analisar o progresso, impulsionando o sucesso organizacional e pessoal.
 # Implementação
-## Instalando o npm na máquina
-### Windows:
-Baixe o instalador .msi no site oficial do <a target="_blank" href="https://nodejs.org/">NodeJS</a> e siga os passos.
-
-### Linux:
-Aptitude:
-```
-sudo apt install nodejs npm
-```
-Pacman:
-```
-pacman -S nodejs npm
-```
-Snap:
-```
-sudo snap install node --classic --channel=8/stable
-```
-(Caso a instalação for feita pelo snap, será preciso atualiza-lo com ```sudo snap refresh node```)
-
 ## Primeira implementação
 No terminal, vá até a pasta do projeto e inicie o npm:
 ```

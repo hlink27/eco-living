@@ -38,6 +38,13 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [EJS](https://ejs.co/)
 - [Express](https://expressjs.com/pt-br/)
 - [DataTables](https://datatables.net/)
+
+# Observações
+## Usuário padrão
+```
+admin
+admin
+```
 # Autores
 <table>
   <tr>

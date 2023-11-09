@@ -38,6 +38,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [EJS](https://ejs.co/)
 - [Express](https://expressjs.com/pt-br/)
 - [DataTables](https://datatables.net/)
+- [Sequelize](https://sequelize.org/)
 
 # Observações
 ## Usuário padrão
@@ -45,6 +46,8 @@ As seguintes ferramentas foram usadas na construção do projeto:
 admin
 admin
 ```
+## Banco de Dados
+Projeto feito com o Sequelize, portanto, pede um banco em SQL. Conexão é feita pelo arquivo [util/database.js](https://github.com/hlink27/eco-living/tree/main/util)
 # Autores
 <table>
   <tr>

@@ -8,8 +8,9 @@
 # O que é?
 O EcoLiving é um sistema web baseado em Node.js, projetado para gerenciar eficientemente metas corporativas, contratos empresariais e até mesmo objetivos pessoais. Intuitivo e escalável, oferece uma plataforma unificada para estabelecer, monitorar e analisar o progresso, impulsionando o sucesso organizacional e pessoal.
 <p align="center">
-    <img src="https://imgur.com/a/wje4kCh">    
+    <img src="https://i.imgur.com/YXbTA7s.png">    
 </p>
+
 # Implementação
 ## Primeira implementação
 No terminal, vá até a pasta do projeto e inicie o npm:

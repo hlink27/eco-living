@@ -47,7 +47,7 @@ admin
 admin
 ```
 ## Banco de Dados
-Projeto feito com o Sequelize, portanto, pede um banco em SQL. Conexão é feita pelo arquivo [util/database.js](https://github.com/hlink27/eco-living/tree/main/util)
+Projeto feito com o Sequelize, portanto, pede um banco em SQL. Conexão é feita pelo arquivo [util/database.js](https://github.com/hlink27/eco-living/blob/main/util/database.js)
 # Autores
 <table>
   <tr>

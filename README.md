@@ -7,6 +7,10 @@
 
 # O que é?
 O EcoLiving é um sistema web baseado em Node.js, projetado para gerenciar eficientemente metas corporativas, contratos empresariais e até mesmo objetivos pessoais. Intuitivo e escalável, oferece uma plataforma unificada para estabelecer, monitorar e analisar o progresso, impulsionando o sucesso organizacional e pessoal.
+<p align="center">
+    <img src="https://i.imgur.com/YXbTA7s.png">    
+</p>
+
 # Implementação
 ## Primeira implementação
 No terminal, vá até a pasta do projeto e inicie o npm:
@@ -34,6 +38,16 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [EJS](https://ejs.co/)
 - [Express](https://expressjs.com/pt-br/)
 - [DataTables](https://datatables.net/)
+- [Sequelize](https://sequelize.org/)
+
+# Observações
+## Usuário padrão
+```
+admin
+admin
+```
+## Banco de Dados
+Projeto feito com o Sequelize, portanto, pede um banco em SQL. Conexão é feita pelo arquivo [util/database.js](https://github.com/hlink27/eco-living/blob/main/util/database.js)
 # Autores
 <table>
   <tr>

@@ -6,6 +6,8 @@ exports.getLogin = (req, res, next) => {
     var erro = req.query.erro
     if(erro){
         erro = 'Usuário ou senha incorreta'
+    } else {
+        erro = false
     }
     res.render('auth/login', {
         path: '/login',

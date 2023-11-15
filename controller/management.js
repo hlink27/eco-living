@@ -284,10 +284,19 @@ exports.postAddSubmeta = (req, res, next) => {
     var sts = req.body.sts
     var temaId = req.body.temaId
     var estruturaId = req.body.estruturaId
+    let dateIn = req.body.dateIn
+    let dateFi = req.body.dateFi
+    let resp = req.body.resp
+    let details = req.body.details
+
     Subtema.create({
         nome: nome,
         sts: sts,
-        tema_id: temaId
+        tema_id: temaId,
+        dateIn: dateIn,
+        dateFi: dateFi,
+        resp: resp,
+        details: details,
     })
     .then(result => {
         res.redirect(`/estrutura/${estruturaId}`)
@@ -328,10 +337,19 @@ exports.postEditSubtema = (req, res, next) => {
     var sts = req.body.sts
     var subtema = req.body.subtemaId
     var estrutura = req.body.estruturaId
+    let dateIn = req.body.dateIn
+    let dateFi = req.body.dateFi
+    let resp = req.body.resp
+    let details = req.body.details
+
     Subtema.findByPk(subtema)
     .then(subtema => {
         subtema.nome = nome,
         subtema.sts = sts,
+        subtema.dateIn = dateIn,
+        subtema.dateFi = dateFi, 
+        subtema.resp = resp,
+        subtema.details = details, 
         subtema.save()
     })
     .then(result => {

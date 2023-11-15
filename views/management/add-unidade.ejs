@@ -73,6 +73,14 @@
               <form class="input-form" action="<%= edit ? `/edit-subtema` : `/add-subtema` %>" method="POST" autocomplete="off">
                 <h2>Título:</h2> 
                 <input class="text-input" type="text" name="nome" required value="<%= edit ? `${subtema.nome}` : `` %>"><br>
+                <h2>Data Inicio:</h2> 
+                <input class="text-input" type="date" name="dateIn"  value="<%= edit ? `${subtema.dateIn}` : `` %>"><br>
+                <h2>Data Fim:</h2> 
+                <input class="text-input" type="date" name="dateFi" value="<%= edit ? `${subtema.dateFi}` : '' %>"><br>
+                <h2>Responsavel:</h2> 
+                <input class="text-input" type="text" name="resp" required value="<%= edit ? `${subtema.resp}` : `` %>"><br>
+                <h2>Detalhes:</h2> 
+                <input class="text-input" type="text" name="details" value="<%= edit ? `${subtema.details}` : `` %>"><br>
                 <h2>Progresso:</h2>
                 <select name="sts" class="input-select">
                   <option <%= edit ? (subtema.sts == 'inexistente' ? 'selected' : '') : '' %> value="inexistente">Inexistente</option>

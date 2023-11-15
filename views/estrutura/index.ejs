@@ -1,4 +1,5 @@
 <%- include('../includes/head.ejs')%>
+<link rel="stylesheet" href="/css/modal.css">
   </head>
   <body>
     <%- include('../includes/nav.ejs') %>
@@ -63,9 +64,34 @@
                     <% } %>
                     <ul class="items-list">
                       <% for(s of subs){%>
+                        <div id="myModal<%= s.id %>" class="modal">
+                          <div class="modal-content delete">
+                            <span class="close"></span>
+                            <div class="headline">
+                              <h3><%= s.nome %></h3>
+                              <%
+                                let dateInT = new Date(s.dateIn)
+                                let dateFiT = new Date(s.dateFi)
+                              %>
+                              <h3>De <%= dateInT.toLocaleDateString("pt-BR") %> até <%= dateFiT.toLocaleDateString("pt-BR")%></h3>
+                              <h3>Responsável: <%= s.resp %></h3>
+                              <h3>Obs: <%= s.details %></h3>
+                            </div>
+                          </div>
+                        </div>
                         <li>
-                          <a href="/edit-subtema/<%= s.id %>"><span class="item-name"><%= s.nome %></span></a>
-                          <div class="status <%= s.sts %>"><%= s.sts %></div>
+                          <% if(user.is_admin){ %>
+                            <a href="/edit-subtema/<%= s.id %>">
+                          <% } else { %>
+                            <div onclick="openModal(<%= s.id %>)">
+                          <% }%>
+                            <span class="item-name"><%= s.nome %></span>
+                            <div class="status <%= s.sts %>"><%= s.sts %></div>
+                          <% if(user.is_admin){ %>
+                            </a>
+                          <% } else { %>
+                            </div>
+                          <% } %>
                         </li>
                       <% } %>
                     </ul>
@@ -75,6 +101,7 @@
             </main>
           </div>
           </div>
+    <script src="/js/modal.js"></script>
     <script src="" async defer></script>
   </body>
 </html>

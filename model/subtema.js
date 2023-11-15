@@ -10,6 +10,10 @@ const Subtema = sequelize.define('subtema', {
     },
     nome: Sequelize.STRING,
     sts: Sequelize.STRING,
-    details: Sequelize.STRING
+    details: Sequelize.STRING,
+    dateIn: Sequelize.DATEONLY,
+    dateFi: Sequelize.DATEONLY,
+    resp: Sequelize.STRING,
+    tel:Sequelize.STRING,
 }, {paranoid: true})
 module.exports = Subtema
